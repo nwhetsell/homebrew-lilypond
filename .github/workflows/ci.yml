@@ -1,0 +1,18 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  macOS:
+    runs-on: macos-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - run: brew tap $GITHUB_ACTOR/lilypond
+
+    - run: brew cask install mactex-no-gui
+
+    - run: brew install lilypond
+
+    - run: brew test lilypond
