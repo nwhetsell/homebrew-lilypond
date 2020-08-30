@@ -18,6 +18,7 @@ class Lilypond < Formula
   url "https://lilypond.org/download/sources/v2.20/lilypond-2.20.0.tar.gz"
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN"]
+  revision 1
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
@@ -28,6 +29,7 @@ class Lilypond < Formula
   depends_on "imagemagick"
   depends_on :macos # Due to Python 2
   depends_on MacTeXRequirement
+  depends_on "nwhetsell/lilypond/extractpdfmark"
   depends_on "nwhetsell/lilypond/guile@1"
   depends_on "pango"
 
