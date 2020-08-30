@@ -65,6 +65,8 @@ class Lilypond < Formula
     <<~EOS
       For LilyPond to find Guile libraries, you may need to add to #{shell_profile}:
         export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:#{Formula["guile@1"].opt_lib}"
+      or link guile@1 by running:
+        brew link --force guile@1
     EOS
   end
 
