@@ -20,7 +20,6 @@ class Lilypond < Formula
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN"]
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
-  depends_on "autoconf" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "fontforge"
   depends_on "freetype"
