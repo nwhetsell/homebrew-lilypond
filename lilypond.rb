@@ -42,8 +42,6 @@ class Lilypond < Formula
   end
 
   def install
-    ENV.append "LDFLAGS", "-L#{Formula["guile@1"].lib}"
-    ENV.append_path "PATH", Formula["guile@1"].bin
     ENV.append_path "PATH", "/Library/TeX/texbin"
 
     resource("font-urw-base35").stage buildpath/"urw"
