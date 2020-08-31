@@ -26,10 +26,8 @@ class Lilypond < Formula
   depends_on "freetype"
   depends_on "gettext"
   depends_on "ghostscript"
-  depends_on "imagemagick"
   depends_on :macos # Due to Python 2
   depends_on MacTeXRequirement
-  depends_on "nwhetsell/lilypond/extractpdfmark"
   depends_on "nwhetsell/lilypond/guile@1"
   depends_on "pango"
 
