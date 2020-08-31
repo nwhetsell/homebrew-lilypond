@@ -18,9 +18,11 @@ class Lilypond < Formula
   url "https://lilypond.org/download/sources/v2.20/lilypond-2.20.0.tar.gz"
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN"]
-  revision 1
+  revision 2
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
+  depends_on "autoconf" => :build
+  depends_on "bison" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "fontforge"
   depends_on "freetype"
@@ -31,7 +33,6 @@ class Lilypond < Formula
   depends_on "nwhetsell/lilypond/guile@1"
   depends_on "pango"
 
-  uses_from_macos "bison" => :build
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
 
@@ -50,6 +51,8 @@ class Lilypond < Formula
     inreplace "config.make.in",
       %r{^elispdir\s*=\s*\$\(datadir\)/emacs/site-lisp$},
       "elispdir = $(datadir)/emacs/site-lisp/lilypond"
+
+    system "./autogen.sh", "--noconfigure"
 
     mkdir "build" do
       system "../configure", "--disable-documentation",

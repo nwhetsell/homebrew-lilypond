@@ -13,6 +13,12 @@ jobs:
 
     - run: brew cask install mactex-no-gui
 
-    - run: brew install lilypond
+    - run: brew install --verbose lilypond
 
-    - run: brew test lilypond
+    - run: brew test --verbose lilypond
+
+    - run: brew uninstall lilypond
+
+    - run: brew install --HEAD --verbose lilypond
+
+    - run: brew test --verbose lilypond
