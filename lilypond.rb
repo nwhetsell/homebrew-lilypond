@@ -23,11 +23,15 @@ class Lilypond < Formula
 
   depends_on "autoconf" => :build
   depends_on "bison" => :build
+  depends_on "fontforge" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
-  depends_on "fontforge"
+  depends_on "fontconfig"
   depends_on "freetype"
   depends_on "gettext"
-  depends_on "ghostscript"
+  depends_on "glib"
+  depends_on "gmp"
+  depends_on "harfbuzz"
+  depends_on "libtool"
   depends_on :macos # Due to Python 2
   depends_on MacTeXRequirement
   depends_on "nwhetsell/lilypond/guile@1"
