@@ -1,6 +1,8 @@
 class MacTeXRequirement < Requirement
   fatal true
+
   satisfy { Dir.exist?("/Library/TeX") }
+
   def message
     <<~EOS
       MacTeX is required. You can install it by running one of:
@@ -9,6 +11,26 @@ class MacTeXRequirement < Requirement
       or by downloading and running an installer from
         https://tug.org/mactex/mactex-download.html
     EOS
+  end
+end
+
+class LinkingGuileAT1Requirement < Requirement
+  fatal true
+
+  satisfy(build_env: false) do
+    guile_path = which("guile")
+    !guile_path.nil? && File.realpath(guile_path).match?(%r{^#{HOMEBREW_PREFIX}/Cellar/guile@1/#{Formula["guile@1"].version}/bin/guile$})
+  end
+
+  def message
+    <<~EOS
+      guile@1 needs to be linked:
+        brew link --force guile@1
+    EOS
+  end
+
+  def display_s
+    "linking guile@1"
   end
 end
 
@@ -45,6 +67,7 @@ class Lilypond < Formula
   if build.with? "documentation"
     depends_on "ghostscript"
     depends_on "imagemagick"
+    depends_on LinkingGuileAT1Requirement
     depends_on "nwhetsell/lilypond/extractpdfmark"
     depends_on "nwhetsell/lilypond/texi2html@1"
   end
