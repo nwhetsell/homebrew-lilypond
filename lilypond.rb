@@ -39,16 +39,14 @@ class Lilypond < Formula
   depends_on "nwhetsell/lilypond/guile@1"
   depends_on "pango"
 
+  uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
 
   if build.with? "documentation"
-    depends_on "flex" => :build
     depends_on "ghostscript"
     depends_on "imagemagick"
     depends_on "nwhetsell/lilypond/extractpdfmark"
     depends_on "nwhetsell/lilypond/texi2html@1"
-  else
-    uses_from_macos "flex" => :build
   end
 
   resource "font-urw-base35" do
