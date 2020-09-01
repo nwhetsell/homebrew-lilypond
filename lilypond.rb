@@ -21,6 +21,8 @@ class Lilypond < Formula
   revision 2
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
+  option "with-documentation", "Build with documentation (requires --HEAD)"
+
   depends_on "autoconf" => :build
   depends_on "bison" => :build
   depends_on "fontforge" => :build
@@ -37,8 +39,17 @@ class Lilypond < Formula
   depends_on "nwhetsell/lilypond/guile@1"
   depends_on "pango"
 
-  uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
+
+  if build.with? "documentation"
+    depends_on "flex" => :build
+    depends_on "ghostscript"
+    depends_on "imagemagick"
+    depends_on "nwhetsell/lilypond/extractpdfmark"
+    depends_on "nwhetsell/lilypond/texi2html@1"
+  else
+    uses_from_macos "flex" => :build
+  end
 
   resource "font-urw-base35" do
     url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.zip"
@@ -57,10 +68,15 @@ class Lilypond < Formula
     system "./autogen.sh", "--noconfigure"
 
     mkdir "build" do
-      system "../configure", "--disable-documentation",
-                             "--prefix=#{prefix}",
-                             "--with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre",
-                             "--with-urwotf-dir=#{buildpath}/urw/fonts"
+      args = %W[
+        --prefix=#{prefix}
+        --with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre
+        --with-urwotf-dir=#{buildpath}/urw/fonts
+      ]
+
+      args << "--disable-documentation" if build.without? "documentation"
+
+      system "../configure", *args
       system "make"
       system "make", "install"
     end
