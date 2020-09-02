@@ -17,12 +17,7 @@ end
 class LinkingGuileAT1Requirement < Requirement
   fatal true
 
-  satisfy(build_env: false) do
-    guile_path = which("guile")
-    next false if guile_path.nil?
-    next false if !guile_path.to_s.match?(%r{^#{HOMEBREW_PREFIX}/bin/guile$})
-    File.realpath(guile_path).match?(%r{^#{HOMEBREW_PREFIX}/Cellar/guile@1/#{Formula["guile@1"].version}/bin/guile$})
-  end
+  satisfy { Formula["guile@1"].linked? }
 
   def message
     <<~EOS
