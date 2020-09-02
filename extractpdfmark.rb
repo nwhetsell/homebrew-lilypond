@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Extractpdfmark < Formula
   desc "Extract page mode and named destinations as PDFmark"
   homepage "https://github.com/trueroad/extractpdfmark"

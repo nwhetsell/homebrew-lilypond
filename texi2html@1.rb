@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Texi2htmlAT1 < Formula
   desc "Convert TeXinfo files to HTML"
   homepage "https://www.nongnu.org/texi2html/"

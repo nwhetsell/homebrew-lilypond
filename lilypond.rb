@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MacTeXRequirement < Requirement
   fatal true
 
@@ -70,6 +72,8 @@ class Lilypond < Formula
   end
 
   resource "font-urw-base35" do
+    # Use the same URL as the font-urw-base35 cask:
+    # https://github.com/Homebrew/homebrew-cask-fonts/blob/master/Casks/font-urw-base35.rb
     url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.zip"
     sha256 "4505042c8859166f5bff77e33907e244b66eb4e04b56646e14e0a97e5757cd21"
   end
