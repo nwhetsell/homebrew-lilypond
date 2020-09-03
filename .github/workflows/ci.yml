@@ -19,6 +19,7 @@ jobs:
 
     - run: brew uninstall lilypond
 
+    - run: brew unlink guile
     - run: brew link --force guile@1
     - run: brew install --HEAD --verbose --with-documentation lilypond
 
