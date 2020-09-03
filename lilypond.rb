@@ -16,20 +16,21 @@ class MacTeXRequirement < Requirement
   end
 end
 
-class LinkingGuileAT1Requirement < Requirement
+class LinkGuileAT1Requirement < Requirement
   fatal true
 
   satisfy { Formula["guile@1"].linked? }
 
   def message
     <<~EOS
-      guile@1 needs to be linked:
+      guile@1 must first be installed and linked:
+        brew install guile@1
         brew link --force guile@1
     EOS
   end
 
   def display_s
-    "linking guile@1"
+    "link guile@1"
   end
 end
 
@@ -66,7 +67,7 @@ class Lilypond < Formula
   if build.with? "documentation"
     depends_on "ghostscript"
     depends_on "imagemagick"
-    depends_on LinkingGuileAT1Requirement
+    depends_on LinkGuileAT1Requirement
     depends_on "nwhetsell/lilypond/extractpdfmark"
     depends_on "nwhetsell/lilypond/texi2html@1"
   end
