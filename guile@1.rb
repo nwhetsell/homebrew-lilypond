@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GuileAT1 < Formula
   desc "GNU Ubiquitous Intelligent Language for Extensions"
   homepage "https://www.gnu.org/software/guile/"
