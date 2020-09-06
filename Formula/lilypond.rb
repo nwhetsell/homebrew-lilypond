@@ -87,7 +87,7 @@ class Lilypond < Formula
     resource("font-urw-base35").stage buildpath/"urw"
 
     inreplace "config.make.in",
-      %r{^elispdir\s*=\s*\$\(datadir\)/emacs/site-lisp$},
+      %r{^elispdir\s*=\s*\$\(datadir\)/emacs/site-lisp\s*$},
       "elispdir = $(datadir)/emacs/site-lisp/lilypond"
 
     system "./autogen.sh", "--noconfigure"
