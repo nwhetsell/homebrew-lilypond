@@ -122,7 +122,7 @@ class Lilypond < Formula
     EOS
 
     ENV["DYLD_LIBRARY_PATH"] = Formula["guile@1"].lib
-    system bin/"lilypond", "test.ly"
+    system bin/"lilypond", "--loglevel=ERROR", "test.ly"
 
     assert_predicate testpath/"test.pdf", :exist?
   end
