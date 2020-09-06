@@ -41,7 +41,8 @@ class Lilypond < Formula
   homepage "https://lilypond.org"
   url "https://lilypond.org/download/sources/v2.20/lilypond-2.20.0.tar.gz"
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
-  license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN"]
+  license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
+                   "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
   revision 2
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
