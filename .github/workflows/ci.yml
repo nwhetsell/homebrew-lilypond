@@ -9,18 +9,19 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - run: brew tap $GITHUB_ACTOR/lilypond
-
     - run: brew cask install mactex-no-gui
 
+    - run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+
+    - run: brew install --only-dependencies --verbose lilypond
     - run: brew install --verbose lilypond
 
     - run: brew test --verbose lilypond
 
     - run: brew uninstall lilypond
 
-    - run: brew unlink guile
-    - run: brew link --force guile@1
+    - run: brew unlink guile && brew link --force guile@1
+    - run: brew install --HEAD --only-dependencies --verbose --with-documentation lilypond
     - run: brew install --HEAD --verbose --with-documentation lilypond
 
     - run: brew test --verbose lilypond
