@@ -43,10 +43,10 @@ class Lilypond < Formula
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
-  revision 2
+  revision 3
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
-  option "with-documentation", "Build with documentation (requires --HEAD)"
+  option "with-documentation", "Build with documentation"
 
   depends_on "autoconf" => :build
   depends_on "bison" => :build
@@ -71,8 +71,10 @@ class Lilypond < Formula
     depends_on "ghostscript"
     depends_on "imagemagick"
     depends_on LinkGuileAT1Requirement
+    depends_on "nwhetsell/lilypond/dblatex"
     depends_on "nwhetsell/lilypond/extractpdfmark"
     depends_on "nwhetsell/lilypond/texi2html@1"
+    depends_on "netpbm" if !build.head?
   end
 
   resource "font-urw-base35" do
