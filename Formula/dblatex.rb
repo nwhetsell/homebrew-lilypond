@@ -1,3 +1,5 @@
+require_relative "../Library/MacTeXRequirement"
+
 class Dblatex < Formula
   desc "Transform DocBook XML to LaTeX"
   homepage "http://dblatex.sourceforge.net"
@@ -6,6 +8,7 @@ class Dblatex < Formula
   license "GPL-2.0-or-later"
 
   depends_on "imagemagick"
+  depends_on MacTeXRequirement
 
   def install
     ENV.append_path "PATH", "/Library/TeX/texbin"
