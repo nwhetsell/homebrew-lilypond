@@ -1,5 +1,36 @@
 require_relative "../Library/MacTeXRequirement"
 
+class DejaVuFontsRequirement < Requirement
+  fatal true
+
+  satisfy do
+    require "open3"
+    stdout, = Open3.capture3 "osascript", stdin_data: <<~EOS
+      use framework "AppKit"
+      return (current application's NSFontManager's sharedFontManager's availableFontFamilies) as list
+    EOS
+    fonts = stdout.split(/\s*,\s*/)
+    fonts.include?("DejaVu Sans") && fonts.include?("DejaVu Sans Mono") && fonts.include?("DejaVu Serif")
+  end
+
+  def message
+    <<~EOS
+      DejaVu fonts are required.
+
+      To install DejaVu fonts included with MacTeX, run:
+        ln -s /Library/TeX/Root/texmf-dist/fonts/truetype/public/dejavu ~/Library/Fonts
+
+      To install DejaVu fonts as a cask, run:
+        brew tap homebrew/cask-fonts
+        brew cask install font-dejavu
+    EOS
+  end
+
+  def display_s
+    "DejaVu fonts"
+  end
+end
+
 class LinkGuileAT1Requirement < Requirement
   fatal true
 
@@ -29,11 +60,13 @@ class Lilypond < Formula
   head "https://git.savannah.gnu.org/git/lilypond.git"
 
   option "with-documentation", "Build with documentation"
+  option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
 
   depends_on "autoconf" => :build
   depends_on "bison" => :build
   depends_on "fontforge" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
+  depends_on DejaVuFontsRequirement if build.with? "html-documentation"
   depends_on "fontconfig"
   depends_on "freetype"
   depends_on "gettext"
@@ -49,14 +82,14 @@ class Lilypond < Formula
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
 
-  if build.with? "documentation"
+  if build.with?("documentation") || build.with?("html-documentation")
     depends_on "ghostscript"
     depends_on "imagemagick"
     depends_on LinkGuileAT1Requirement
+    depends_on "netpbm" unless build.head?
     depends_on "nwhetsell/lilypond/dblatex"
     depends_on "nwhetsell/lilypond/extractpdfmark"
     depends_on "nwhetsell/lilypond/texi2html@1"
-    depends_on "netpbm" if !build.head?
   end
 
   resource "font-urw-base35" do
@@ -84,11 +117,16 @@ class Lilypond < Formula
         --with-urwotf-dir=#{buildpath}/urw/fonts
       ]
 
-      args << "--disable-documentation" if build.without? "documentation"
+      args << "--disable-documentation" if build.without?("documentation") && build.without?("html-documentation")
 
       system "../configure", *args
       system "make"
       system "make", "install"
+
+      if build.with? "html-documentation"
+        system "make", "doc"
+        system "make", "install-doc"
+      end
     end
   end
 
