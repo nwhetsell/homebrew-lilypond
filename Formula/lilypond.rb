@@ -5,11 +5,11 @@ class DejaVuFontsRequirement < Requirement
 
   satisfy do
     require "open3"
-    stdout, = Open3.capture3 "osascript", stdin_data: <<~EOS
+    stdout, = Open3.capture2 "osascript", stdin_data: <<~EOS
       use framework "AppKit"
       return (current application's NSFontManager's sharedFontManager's availableFontFamilies) as list
     EOS
-    fonts = stdout.split(/\s*,\s*/)
+    fonts = stdout.chomp.split /\s*,\s*/
     fonts.include?("DejaVu Sans") && fonts.include?("DejaVu Sans Mono") && fonts.include?("DejaVu Serif")
   end
 
@@ -17,7 +17,7 @@ class DejaVuFontsRequirement < Requirement
     <<~EOS
       DejaVu fonts are required.
 
-      To install DejaVu fonts included with MacTeX, run:
+      To use DejaVu fonts installed with MacTeX, run:
         ln -s /Library/TeX/Root/texmf-dist/fonts/truetype/public/dejavu ~/Library/Fonts
 
       To install DejaVu fonts as a cask, run:
