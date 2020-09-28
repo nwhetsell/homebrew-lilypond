@@ -13,5 +13,16 @@ class Dblatex < Formula
   def install
     ENV.append_path "PATH", "/Library/TeX/texbin"
     system "python", "setup.py", "install", "--prefix=#{prefix}"
+    inreplace bin/"dblatex", "#!/usr/bin/env python", "#!/usr/bin/python"
+  end
+
+  test do
+    (testpath/"test.xml").write <<~EOS
+    <book xmlns="http://docbook.org/ns/docbook">
+      <title>hello, world</title>
+    </book>
+    EOS
+    system bin/"dblatex", "test.xml"
+    assert_predicate testpath/"test.pdf", :exist?
   end
 end
