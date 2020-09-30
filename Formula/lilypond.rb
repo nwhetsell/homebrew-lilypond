@@ -100,26 +100,26 @@ class Lilypond < Formula
   end
 
   def install
-    ENV.append_path "PATH", "/Library/TeX/texbin"
-
-    resource("font-urw-base35").stage buildpath/"urw"
-
     inreplace "config.make.in",
-      %r{^elispdir\s*=\s*\$\(datadir\)/emacs/site-lisp\s*$},
+      %r{^\s*elispdir\s*=\s*\$\(datadir\)/emacs/site-lisp\s*$},
       "elispdir = $(datadir)/emacs/site-lisp/lilypond"
 
     system "./autogen.sh", "--noconfigure"
 
     mkdir "build" do
+      resource("font-urw-base35").stage buildpath/"urw"
+
       args = %W[
         --prefix=#{prefix}
         --with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre
         --with-urwotf-dir=#{buildpath}/urw/fonts
       ]
-
       args << "--disable-documentation" if build.without?("documentation") && build.without?("html-documentation")
 
+      ENV.append_path "PATH", "/Library/TeX/texbin"
+
       system "../configure", *args
+
       system "make"
       system "make", "install"
 
