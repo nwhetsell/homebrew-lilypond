@@ -18,9 +18,9 @@ class Dblatex < Formula
 
   test do
     (testpath/"test.xml").write <<~EOS
-    <book xmlns="http://docbook.org/ns/docbook">
-      <title>hello, world</title>
-    </book>
+      <book xmlns="http://docbook.org/ns/docbook">
+        <title>hello, world</title>
+      </book>
     EOS
     system bin/"dblatex", "test.xml"
     assert_predicate testpath/"test.pdf", :exist?
