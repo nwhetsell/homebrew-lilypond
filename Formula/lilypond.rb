@@ -74,7 +74,7 @@ class Lilypond < Formula
   depends_on "gmp"
   depends_on "harfbuzz"
   depends_on "libtool"
-  depends_on :macos # Due to Python 2
+  depends_on :macos
   depends_on MacTeXRequirement
   depends_on "nwhetsell/lilypond/guile@1"
   depends_on "pango"
