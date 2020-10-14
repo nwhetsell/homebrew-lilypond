@@ -57,7 +57,11 @@ class Lilypond < Formula
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
   revision 3
-  head "https://git.savannah.gnu.org/git/lilypond.git"
+
+  head do
+    url "https://git.savannah.gnu.org/git/lilypond.git"
+    mirror "https://github.com/lilypond/lilypond.git"
+  end
 
   option "with-documentation", "Build with documentation"
   option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
