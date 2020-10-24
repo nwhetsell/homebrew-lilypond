@@ -31,24 +31,6 @@ class DejaVuFontsRequirement < Requirement
   end
 end
 
-class LinkGuileAT1Requirement < Requirement
-  fatal true
-
-  satisfy { Formula["guile@1"].linked? }
-
-  def message
-    <<~EOS
-      guile@1 must first be installed and linked:
-        brew install guile@1
-        brew link --force guile@1
-    EOS
-  end
-
-  def display_s
-    "link guile@1"
-  end
-end
-
 class Lilypond < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
@@ -56,7 +38,7 @@ class Lilypond < Formula
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
-  revision 3
+  revision 4
 
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
@@ -89,7 +71,6 @@ class Lilypond < Formula
   if build.with?("documentation") || build.with?("html-documentation")
     depends_on "ghostscript"
     depends_on "imagemagick"
-    depends_on LinkGuileAT1Requirement
     depends_on "netpbm" unless build.head?
     depends_on "nwhetsell/lilypond/dblatex"
     depends_on "nwhetsell/lilypond/extractpdfmark"
@@ -118,7 +99,12 @@ class Lilypond < Formula
         --with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre
         --with-urwotf-dir=#{buildpath}/urw/fonts
       ]
-      args << "--disable-documentation" if build.without?("documentation") && build.without?("html-documentation")
+
+      if build.with?("documentation") || build.with?("html-documentation")
+        ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@1"].lib
+      else
+        args << "--disable-documentation"
+      end
 
       ENV.append_path "PATH", "/Library/TeX/texbin"
 
@@ -127,6 +113,17 @@ class Lilypond < Formula
       system "make"
       system "make", "install"
 
+      libexec.install bin/"lilypond"
+
+      (bin/"lilypond").write <<~EOS
+        #!/bin/sh
+
+        export GUILE_WARN_DEPRECATED=no
+        export LTDL_LIBRARY_PATH="#{Formula["guile@1"].lib}:$LTDL_LIBRARY_PATH"
+
+        #{libexec}/lilypond "$@"
+      EOS
+
       if build.with? "html-documentation"
         system "make", "doc"
         system "make", "install-doc"
@@ -134,23 +131,11 @@ class Lilypond < Formula
     end
   end
 
-  def caveats
-    <<~EOS
-      For LilyPond to find Guile libraries, you may need to add to #{shell_profile}:
-        export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:#{Formula["guile@1"].opt_lib}"
-      or link guile@1 by running:
-        brew link --force guile@1
-    EOS
-  end
-
   test do
     (testpath/"test.ly").write <<~EOS
       \\relative { c' d e f g a b c }
     EOS
-
-    ENV["DYLD_LIBRARY_PATH"] = Formula["guile@1"].lib
     system bin/"lilypond", "--loglevel=ERROR", "test.ly"
-
     assert_predicate testpath/"test.pdf", :exist?
   end
 end
