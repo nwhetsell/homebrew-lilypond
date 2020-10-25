@@ -38,7 +38,7 @@ class Lilypond < Formula
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
-  revision 4
+  revision 5
 
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
@@ -117,11 +117,7 @@ class Lilypond < Formula
 
       (bin/"lilypond").write <<~EOS
         #!/bin/sh
-
-        export GUILE_WARN_DEPRECATED=no
-        export LTDL_LIBRARY_PATH="#{Formula["guile@1"].lib}:$LTDL_LIBRARY_PATH"
-
-        #{libexec}/lilypond "$@"
+        GUILE_WARN_DEPRECATED=no LTDL_LIBRARY_PATH="#{Formula["guile@1"].lib}:$LTDL_LIBRARY_PATH" #{opt_libexec}/lilypond "$@"
       EOS
 
       if build.with? "html-documentation"
