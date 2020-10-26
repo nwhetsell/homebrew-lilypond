@@ -38,14 +38,13 @@ class Lilypond < Formula
   sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
-  revision 5
+  revision 6
 
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
     mirror "https://github.com/lilypond/lilypond.git"
   end
 
-  option "with-documentation", "Build with documentation"
   option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
 
   depends_on "autoconf" => :build
@@ -56,26 +55,23 @@ class Lilypond < Formula
   depends_on "fontconfig"
   depends_on "freetype"
   depends_on "gettext"
+  depends_on "ghostscript"
   depends_on "glib"
   depends_on "gmp"
   depends_on "harfbuzz"
+  depends_on "imagemagick"
   depends_on "libtool"
   depends_on :macos
   depends_on MacTeXRequirement
+  depends_on "netpbm" unless build.head?
+  depends_on "nwhetsell/lilypond/dblatex"
+  depends_on "nwhetsell/lilypond/extractpdfmark"
   depends_on "nwhetsell/lilypond/guile@1"
+  depends_on "nwhetsell/lilypond/texi2html@1"
   depends_on "pango"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
-
-  if build.with?("documentation") || build.with?("html-documentation")
-    depends_on "ghostscript"
-    depends_on "imagemagick"
-    depends_on "netpbm" unless build.head?
-    depends_on "nwhetsell/lilypond/dblatex"
-    depends_on "nwhetsell/lilypond/extractpdfmark"
-    depends_on "nwhetsell/lilypond/texi2html@1"
-  end
 
   resource "font-urw-base35" do
     # Use the same URL as the font-urw-base35 cask:
@@ -100,15 +96,11 @@ class Lilypond < Formula
         --with-urwotf-dir=#{buildpath}/urw/fonts
       ]
 
-      if build.with?("documentation") || build.with?("html-documentation")
-        ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@1"].lib
-      else
-        args << "--disable-documentation"
-      end
-
       ENV.append_path "PATH", "/Library/TeX/texbin"
 
       system "../configure", *args
+
+      ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@1"].lib
 
       system "make"
       system "make", "install"

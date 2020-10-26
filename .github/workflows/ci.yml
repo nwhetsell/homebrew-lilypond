@@ -19,12 +19,6 @@ jobs:
 
     - run: brew uninstall lilypond
 
-    - run: brew install --only-dependencies --verbose --with-documentation lilypond
-    - run: brew install --verbose --with-documentation lilypond
-    - run: brew test --verbose lilypond
-
-    - run: brew uninstall lilypond
-
-    - run: brew install --HEAD --only-dependencies --verbose --with-documentation lilypond
-    - run: brew install --HEAD --verbose --with-documentation lilypond
+    - run: brew install --HEAD --only-dependencies --verbose lilypond
+    - run: brew install --HEAD --verbose lilypond
     - run: brew test --verbose lilypond
