@@ -90,15 +90,11 @@ class Lilypond < Formula
     mkdir "build" do
       resource("font-urw-base35").stage buildpath/"urw"
 
-      args = %W[
-        --prefix=#{prefix}
-        --with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre
-        --with-urwotf-dir=#{buildpath}/urw/fonts
-      ]
-
       ENV.append_path "PATH", "/Library/TeX/texbin"
 
-      system "../configure", *args
+      system "../configure", "--prefix=#{prefix}",
+                             "--with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre",
+                             "--with-urwotf-dir=#{buildpath}/urw/fonts"
 
       ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@1"].lib
 
