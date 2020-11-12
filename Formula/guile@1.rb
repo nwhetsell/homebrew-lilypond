@@ -5,6 +5,7 @@ class GuileAT1 < Formula
   mirror "https://ftpmirror.gnu.org/guile/guile-1.8.8.tar.gz"
   sha256 "c3471fed2e72e5b04ad133bbaaf16369e8360283679bcf19800bc1b381024050"
   license "LGPL-2.1-or-later"
+  revision 1
 
   keg_only :versioned_formula
 
@@ -17,17 +18,12 @@ class GuileAT1 < Formula
   depends_on "readline"
 
   def install
-    # Work around Xcode 11 clang bug
-    # https://bitbucket.org/multicoreware/x265/issues/514/wrong-code-generated-on-macos-1015
-    ENV.append_to_cflags "-fno-stack-check" if DevelopmentTools.clang_build_version >= 1010
-
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
                           "--with-libgmp-prefix=#{Formula["gmp"].opt_prefix}",
                           "--with-libreadline-prefix=#{Formula["readline"].opt_prefix}"
     system "make", "install"
 
-    # A really messed up workaround required on macOS --mkhl
     Pathname.glob("#{lib}/*.dylib") do |dylib|
       lib.install_symlink dylib.basename => "#{dylib.basename(".dylib")}.so"
     end
