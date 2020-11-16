@@ -14,11 +14,6 @@ install:
 script:
   - brew tap $TRAVIS_REPO_SLUG https://github.com/$TRAVIS_REPO_SLUG
 
-  - |
-    if [ "$TRAVIS_OSX_IMAGE" = 'xcode12' ]; then
-      brew unlink python@3.8
-    fi
-
   - brew install --only-dependencies lilypond
   - travis_wait brew install lilypond
   - brew test lilypond
