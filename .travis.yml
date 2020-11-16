@@ -4,7 +4,7 @@ os: osx
 # https://docs.travis-ci.com/user/reference/osx/#macos-version
 jobs:
   include:
-    - osx_image: xcode12   # Catalina 10.15
+    - osx_image: xcode12.2 # Catalina 10.15
     - osx_image: xcode11.3 # Mojave 10.14
     - osx_image: xcode10.1 # High Sierra 10.13
 
