@@ -16,7 +16,7 @@ jobs:
 
     - run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
 
-    - run: xcode-select --switch /Applications/Xcode_12.2.app
+    - run: sudo xcode-select --switch /Applications/Xcode_12.2.app
       if: ${{ matrix.os == 'macos-11.0' }}
 
     - run: brew install --only-dependencies --verbose lilypond
