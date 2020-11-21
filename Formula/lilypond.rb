@@ -51,6 +51,10 @@ class Lilypond < Formula
   depends_on "bison" => :build
   depends_on "fontforge" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
+  depends_on "./dblatex"
+  depends_on "./extractpdfmark"
+  depends_on "./guile@1"
+  depends_on "./texi2html@1"
   depends_on DejaVuFontsRequirement if build.with? "html-documentation"
   depends_on "fontconfig"
   depends_on "freetype"
@@ -64,10 +68,6 @@ class Lilypond < Formula
   depends_on :macos
   depends_on MacTeXRequirement
   depends_on "netpbm" unless build.head?
-  depends_on "nwhetsell/lilypond/dblatex"
-  depends_on "nwhetsell/lilypond/extractpdfmark"
-  depends_on "nwhetsell/lilypond/guile@1"
-  depends_on "nwhetsell/lilypond/texi2html@1"
   depends_on "pango"
 
   uses_from_macos "flex" => :build
