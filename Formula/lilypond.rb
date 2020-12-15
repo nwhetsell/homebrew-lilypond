@@ -22,7 +22,7 @@ class DejaVuFontsRequirement < Requirement
 
       To install DejaVu fonts as a cask, run:
         brew tap homebrew/cask-fonts
-        brew cask install font-dejavu
+        brew install --cask font-dejavu
     EOS
   end
 

@@ -12,12 +12,9 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - run: brew cask install mactex-no-gui
+    - run: brew install --cask mactex-no-gui
 
     - run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
-
-    - run: sudo xcode-select --switch /Applications/Xcode_12.2.app
-      if: ${{ matrix.os == 'macos-11.0' }}
 
     - run: brew install --only-dependencies --verbose lilypond
     - run: brew install --verbose lilypond

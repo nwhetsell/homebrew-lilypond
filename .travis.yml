@@ -8,7 +8,7 @@ jobs:
     - osx_image: xcode11.3 # Mojave 10.14
 
 install:
-  - brew cask install mactex-no-gui
+  - brew install --cask mactex-no-gui
 
 script:
   - brew tap $TRAVIS_REPO_SLUG https://github.com/$TRAVIS_REPO_SLUG

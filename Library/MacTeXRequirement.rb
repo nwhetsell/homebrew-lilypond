@@ -6,8 +6,8 @@ class MacTeXRequirement < Requirement
   def message
     <<~EOS
       MacTeX is required. You can install it by running one of:
-        brew cask install mactex-no-gui
-        brew cask install mactex
+        brew install --cask mactex-no-gui
+        brew install --cask mactex
       or by downloading and running an installer from:
         https://tug.org/mactex/mactex-download.html
     EOS

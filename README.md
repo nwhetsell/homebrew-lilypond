@@ -8,13 +8,13 @@ This is a tap for installing [LilyPond](https://lilypond.org) using [Homebrew](h
 1. Install [MacTeX](https://tug.org/mactex/) by running:
 
     ```sh
-    brew cask install mactex-no-gui
+    brew install --cask mactex-no-gui
     ```
 
     or:
 
     ```sh
-    brew cask install mactex
+    brew install --cask mactex
     ```
 
     or by downloading and running an installer from https://tug.org/mactex/mactex-download.html.
