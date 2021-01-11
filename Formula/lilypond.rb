@@ -34,11 +34,10 @@ end
 class Lilypond < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.20/lilypond-2.20.0.tar.gz"
-  sha256 "595901323fbc88d3039ca4bdbc2d8c5ce46b182edcb3ea9c0940eba849bba661"
+  url "https://lilypond.org/download/sources/v2.22/lilypond-2.22.0.tar.gz"
+  sha256 "64ddd03171d247adc243e01a3be3ec2610d97c62b893c253ad02ac50694b0f4e"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
-  revision 6
 
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
@@ -67,7 +66,6 @@ class Lilypond < Formula
   depends_on "libtool"
   depends_on :macos
   depends_on MacTeXRequirement
-  depends_on "netpbm" unless build.head?
   depends_on "pango"
 
   uses_from_macos "flex" => :build
