@@ -9,7 +9,7 @@ class DejaVuFontsRequirement < Requirement
       use framework "AppKit"
       return (current application's NSFontManager's sharedFontManager's availableFontFamilies) as list
     EOS
-    fonts = stdout.chomp.split /\s*,\s*/
+    fonts = stdout.chomp.split(/\s*,\s*/)
     fonts.include?("DejaVu Sans") && fonts.include?("DejaVu Sans Mono") && fonts.include?("DejaVu Serif")
   end
 

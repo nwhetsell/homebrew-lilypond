@@ -37,6 +37,6 @@ class GuileAT1 < Formula
     ENV["GUILE_AUTO_COMPILE"] = "0"
 
     output = shell_output "#{bin}/guile test.scm"
-    assert_match /^hello, world$/, output
+    assert_match(/^hello, world$/, output)
   end
 end

@@ -24,6 +24,6 @@ class Texi2htmlAT1 < Formula
       @bye
     EOS
     system bin/"texi2html", "test.texi"
-    assert_match /hello, world/, File.read("test.html")
+    assert_match(/hello, world/, File.read("test.html"))
   end
 end
