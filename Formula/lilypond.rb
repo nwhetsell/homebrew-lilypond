@@ -46,14 +46,14 @@ class Lilypond < Formula
 
   option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
 
+  depends_on "./dblatex" => :build
+  depends_on "./texi2html@1" => :build
   depends_on "autoconf" => :build
   depends_on "bison" => :build
   depends_on "fontforge" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
-  depends_on "./dblatex"
   depends_on "./extractpdfmark"
   depends_on "./guile@1"
-  depends_on "./texi2html@1"
   depends_on DejaVuFontsRequirement if build.with? "html-documentation"
   depends_on "fontconfig"
   depends_on "freetype"
