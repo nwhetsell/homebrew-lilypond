@@ -33,3 +33,16 @@ lilypond --loglevel=ERROR --output=c-major-scale - <<EOS
 EOS
 open c-major-scale.pdf
 ```
+
+MacTeX is required to build LilyPond, but not to run it. If you installed MacTeX
+using Homebrew, you can uninstall MacTeX by running:
+
+```sh
+brew uninstall --cask mactex-no-gui
+```
+
+or:
+
+```sh
+brew uninstall --cask mactex
+```
