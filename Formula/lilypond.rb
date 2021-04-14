@@ -50,12 +50,12 @@ class Lilypond < Formula
   depends_on "./texi2html@1" => :build
   depends_on "autoconf" => :build
   depends_on "bison" => :build
+  depends_on DejaVuFontsRequirement => :build if build.with? "html-documentation"
   depends_on "fontforge" => :build
   depends_on MacTeXRequirement => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "./extractpdfmark"
   depends_on "./guile@1"
-  depends_on DejaVuFontsRequirement if build.with? "html-documentation"
   depends_on "fontconfig"
   depends_on "freetype"
   depends_on "gettext"
