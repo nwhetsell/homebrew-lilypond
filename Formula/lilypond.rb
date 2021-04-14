@@ -51,6 +51,7 @@ class Lilypond < Formula
   depends_on "autoconf" => :build
   depends_on "bison" => :build
   depends_on "fontforge" => :build
+  depends_on MacTeXRequirement => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "./extractpdfmark"
   depends_on "./guile@1"
@@ -65,7 +66,6 @@ class Lilypond < Formula
   depends_on "imagemagick"
   depends_on "libtool"
   depends_on :macos
-  depends_on MacTeXRequirement
   depends_on "pango"
 
   uses_from_macos "flex" => :build
