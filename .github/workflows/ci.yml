@@ -8,20 +8,34 @@ jobs:
     strategy:
       matrix:
         os: [macos-10.15, macos-11.0]
+        formula: [lilypond, ly]
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - run: brew install --cask mactex-no-gui
+    - name: Install MacTeX
+      run: brew install --cask mactex-no-gui
+      if: ${{ matrix.formula == 'lilypond' }}
 
-    - run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+    - name: Create Homebrew tap
+      run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
 
-    - run: brew install --only-dependencies --verbose lilypond
-    - run: brew install --verbose lilypond
-    - run: brew test --verbose lilypond
+    - name: Install dependencies
+      env:
+        FORMULA: ${{ matrix.formula }}
+      run: brew install --only-dependencies $FORMULA
 
-    - run: brew uninstall lilypond
+    - name: Install formula
+      env:
+        FORMULA: ${{ matrix.formula }}
+      run: brew install --verbose $FORMULA
 
-    - run: brew install --HEAD --only-dependencies --verbose lilypond
-    - run: brew install --HEAD --verbose lilypond
-    - run: brew test --verbose lilypond
+    - name: Test formula
+      env:
+        FORMULA: ${{ matrix.formula }}
+      run: brew test --verbose $FORMULA
+
+    - name: Uninstall formula
+      env:
+        FORMULA: ${{ matrix.formula }}
+      run: brew uninstall $FORMULA
