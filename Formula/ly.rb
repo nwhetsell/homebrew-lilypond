@@ -14,14 +14,10 @@ class Ly < Formula
   end
 
   test do
-    (testpath/"99bottles.ly").write <<~EOS
-      \header{
-        title = "Ninety-Nine Bottles of Beer"
-        composer =  "Traditional"
-      }
+    (testpath/"test.ly").write <<~EOS
+      \\relative { c' d e f g a b c }
     EOS
-
-    output = shell_output("#{bin}/ly highlight #{testpath}/99bottles.ly")
-    assert_match(/<span class="[^"]*">\s*"Ninety-Nine Bottles of Beer"/, output)
+    output = shell_output "#{bin}/ly 'transpose c d' #{testpath}/test.ly"
+    assert_equal "\\relative { d' e fis g a b cis d }\n", output
   end
 end
