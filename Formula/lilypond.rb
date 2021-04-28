@@ -114,9 +114,7 @@ class Lilypond < Formula
   end
 
   test do
-    (testpath/"test.ly").write <<~EOS
-      \\relative { c' d e f g a b c }
-    EOS
+    (testpath/"test.ly").write "\\relative { c' d e f g a b c }"
     system bin/"lilypond", "--loglevel=ERROR", "test.ly"
     assert_predicate testpath/"test.pdf", :exist?
   end
