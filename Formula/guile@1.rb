@@ -30,9 +30,7 @@ class GuileAT1 < Formula
   end
 
   test do
-    (testpath/"test.scm").write <<~EOS
-      (display "hello, world")(newline)
-    EOS
+    (testpath/"test.scm").write '(display "hello, world")(newline)'
 
     ENV["GUILE_AUTO_COMPILE"] = "0"
 
