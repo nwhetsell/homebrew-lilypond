@@ -14,10 +14,8 @@ class Ly < Formula
   end
 
   test do
-    (testpath/"test.ly").write <<~EOS
-      \\relative { c' d e f g a b c }
-    EOS
+    (testpath/"test.ly").write "\\relative { c' d e f g a b c }"
     output = shell_output "#{bin}/ly 'transpose c d' #{testpath}/test.ly"
-    assert_equal "\\relative { d' e fis g a b cis d }\n", output
+    assert_equal "\\relative { d' e fis g a b cis d }", output
   end
 end
