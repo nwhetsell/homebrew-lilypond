@@ -38,6 +38,7 @@ class Lilypond < Formula
   sha256 "72ac2d54c310c3141c0b782d4e0bef9002d5519cf46632759b1f03ef6969cc30"
   license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
+  revision 1
 
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
@@ -105,6 +106,8 @@ class Lilypond < Formula
         #!/bin/sh
         GUILE_WARN_DEPRECATED=no LTDL_LIBRARY_PATH="#{Formula["guile@1"].lib}:$LTDL_LIBRARY_PATH" #{opt_libexec}/lilypond "$@"
       EOS
+
+      pkgshare.install_symlink pkgshare/version => "current"
 
       if build.with? "html-documentation"
         system "make", "doc"
