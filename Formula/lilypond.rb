@@ -107,7 +107,7 @@ class Lilypond < Formula
         GUILE_WARN_DEPRECATED=no LTDL_LIBRARY_PATH="#{Formula["guile@1"].lib}:$LTDL_LIBRARY_PATH" #{opt_libexec}/lilypond "$@"
       EOS
 
-      pkgshare.install_symlink pkgshare/version => "current"
+      pkgshare.install_symlink version => "current"
 
       if build.with? "html-documentation"
         system "make", "doc"
