@@ -50,27 +50,25 @@ class Lilypond < Formula
   depends_on "./dblatex" => :build
   depends_on "./texi2html@1" => :build
   depends_on "autoconf" => :build
-  depends_on "bison" => :build
+  depends_on "bison" => :build # bison >= 2.4.1 is required
   depends_on DejaVuFontsRequirement => :build if build.with? "html-documentation"
   depends_on "fontforge" => :build
+  depends_on "gettext" => :build
   depends_on MacTeXRequirement => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "./extractpdfmark"
   depends_on "./guile@1"
   depends_on "fontconfig"
   depends_on "freetype"
-  depends_on "gettext"
   depends_on "ghostscript"
-  depends_on "glib"
-  depends_on "gmp"
-  depends_on "harfbuzz"
   depends_on "imagemagick"
-  depends_on "libtool"
   depends_on :macos
   depends_on "pango"
+  depends_on "python@3.9"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
+  uses_from_macos "zip" => :build
 
   resource "font-urw-base35" do
     # Use the same URL as the font-urw-base35 cask:
