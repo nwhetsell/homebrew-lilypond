@@ -10,7 +10,7 @@ class DejaVuFontsRequirement < Requirement
       return (current application's NSFontManager's sharedFontManager's availableFontFamilies) as list
     EOS
     fonts = stdout.chomp.split(/\s*,\s*/)
-    fonts.include?("DejaVu Sans") && fonts.include?("DejaVu Sans Mono") && fonts.include?("DejaVu Serif")
+    (["DejaVu Sans", "DejaVu Sans Mono", "DejaVu Serif"] - fonts).empty?
   end
 
   def message
