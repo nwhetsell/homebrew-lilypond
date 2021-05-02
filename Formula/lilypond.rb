@@ -48,6 +48,7 @@ class Lilypond < Formula
   option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
 
   depends_on "./dblatex" => :build
+  depends_on "./extractpdfmark" => :build
   depends_on "./texi2html@1" => :build
   depends_on "autoconf" => :build
   depends_on "bison" => :build # bison >= 2.4.1 is required
@@ -56,7 +57,6 @@ class Lilypond < Formula
   depends_on "gettext" => :build
   depends_on MacTeXRequirement => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
-  depends_on "./extractpdfmark"
   depends_on "./guile@1"
   depends_on "fontconfig"
   depends_on "freetype"
@@ -68,6 +68,7 @@ class Lilypond < Formula
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
+  uses_from_macos "rsync" => :build
   uses_from_macos "zip" => :build
 
   resource "font-urw-base35" do
