@@ -2,7 +2,9 @@
 
 [![Actions](https://github.com/nwhetsell/homebrew-lilypond/workflows/CI/badge.svg)](https://github.com/nwhetsell/homebrew-lilypond/actions?workflow=CI)
 
-This is a tap for installing [LilyPond](https://lilypond.org) using [Homebrew](https://brew.sh). To use it:
+This is a [Homebrew](https://brew.sh) tap for installing [LilyPond](https://lilypond.org). There are also formulae for [Abjad](https://abjad.github.io) and [ly](https://github.com/frescobaldi/python-ly).
+
+To install LilyPond:
 
 1. Install [MacTeX](https://tug.org/mactex/) by running:
 
