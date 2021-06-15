@@ -15,7 +15,7 @@ jobs:
 
     - name: Install MacTeX
       run: brew install --cask mactex-no-gui
-      if: ${{ matrix.formula == 'lilypond' }}
+      if: ${{ matrix.formula == 'lilypond' || matrix.formula == 'abjad' }}
 
     - name: Create Homebrew tap
       run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
