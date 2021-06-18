@@ -6,9 +6,11 @@ class Abjad < Formula
   url "https://files.pythonhosted.org/packages/67/7f/9bfa1bb008820b96105f70e8e9dc0d68e019d14998456711a18f2e3a32df/abjad-3.4.tar.gz"
   sha256 "c97a21cb420c2332d86b38dc0825b1df34e358033ea0c7384cadd73726a9167a"
   license "GPL-3.0-only"
+  revision 1
 
   depends_on "./lilypond"
   depends_on "python@3.9"
+  depends_on "six"
 
   resource "Babel" do
     url "https://files.pythonhosted.org/packages/17/e6/ec9aa6ac3d00c383a5731cc97ed7c619d3996232c977bb8326bcbb6c687e/Babel-2.9.1.tar.gz"
@@ -58,11 +60,6 @@ class Abjad < Formula
   resource "roman" do
     url "https://files.pythonhosted.org/packages/49/bc/98ff27d555e8315fc572fb84cb72219322a4ea562ab776687c6fd45335c1/roman-3.3.tar.gz"
     sha256 "2c46ac8db827d34e4fa9ccc0577e7f0b0d84f16ffe112351bd4f1ec2eb12d73f"
-  end
-
-  resource "six" do
-    url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
-    sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
   end
 
   resource "Sphinx" do
