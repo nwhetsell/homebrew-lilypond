@@ -14,8 +14,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install MacTeX
-      run: brew install --cask mactex-no-gui
-      if: ${{ matrix.formula == 'lilypond' || matrix.formula == 'abjad' }}
+      env:
+        FORMULA: ${{ matrix.formula }}
+      run: |
+        if brew deps --include-requirements $FORMULA | grep --quiet ':MacTeX'; then
+          brew install --cask mactex-no-gui
+        fi
 
     - name: Create Homebrew tap
       run: brew tap $GITHUB_REPOSITORY $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
