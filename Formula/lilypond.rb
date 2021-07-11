@@ -72,10 +72,13 @@ class Lilypond < Formula
   uses_from_macos "zip" => :build
 
   resource "font-urw-base35" do
-    # Use the same URL as the font-urw-base35 cask:
-    # https://github.com/Homebrew/homebrew-cask-fonts/blob/master/Casks/font-urw-base35.rb
-    url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.zip"
-    sha256 "4505042c8859166f5bff77e33907e244b66eb4e04b56646e14e0a97e5757cd21"
+    # In case it's already installed (and therefore possibly cached), use the
+    # same URL as the font-urw-base35 cask:
+    #   https://github.com/Homebrew/homebrew-cask-fonts/blob/master/Casks/font-urw-base35.rb
+    # Replacing the "tar.gz" extension with "zip" is a hack to circumvent
+    # Homebrew's requirement of GitHub tarballs.
+    url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20200910.tar.gz".sub(/tar\.gz$/, "zip")
+    sha256 "66eed7ca2dfbf44665aa34cb80559f4a90807d46858ccf76c34f9ac1701cfa27"
   end
 
   def install
