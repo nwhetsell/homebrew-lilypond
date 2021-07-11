@@ -22,6 +22,9 @@ class Dblatex < Formula
         <title>hello, world</title>
       </book>
     EOS
+
+    ENV.append_path "PATH", "/Library/TeX/texbin"
+
     system bin/"dblatex", "test.xml"
     assert_predicate testpath/"test.pdf", :exist?
   end
