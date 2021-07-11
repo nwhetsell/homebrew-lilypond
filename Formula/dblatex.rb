@@ -8,6 +8,11 @@ class Dblatex < Formula
   license "GPL-2.0-or-later"
   revision 1
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/dblatex-0.3.10_1"
+    sha256 cellar: :any_skip_relocation, catalina: "b94b019bb592b8c93cfb8c90209479fcb9c06fa0c8e91356ecde220eb9690517"
+  end
+
   depends_on "imagemagick"
   depends_on MacTeXRequirement
 
