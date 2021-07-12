@@ -32,7 +32,8 @@ jobs:
 
       - name: Install MacTeX if necessary
         run: |
-          if brew deps --include-requirements --union $(brew test-bot --dry-run --only-formulae | egrep --only-matching '^    testing_formulae  .+' | cut -c23-) | grep --quiet ':MacTeX'; then
+          formulae=$(brew test-bot --dry-run --only-formulae | egrep --only-matching '^    testing_formulae  .+' | cut -c23-)
+          if brew deps --include-requirements --union $formulae | grep --quiet ':MacTeX'; then
             brew install --cask mactex-no-gui
           fi
         if: github.event_name == 'pull_request'
