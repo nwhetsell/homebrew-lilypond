@@ -1,12 +1,10 @@
 # homebrew-lilypond
 
-[![Actions](https://github.com/nwhetsell/homebrew-lilypond/workflows/CI/badge.svg)](https://github.com/nwhetsell/homebrew-lilypond/actions?workflow=CI)
-
-This is a [Homebrew](https://brew.sh) tap for installing [LilyPond](https://lilypond.org). There are also formulae for [Abjad](https://abjad.github.io) and [ly](https://github.com/frescobaldi/python-ly).
+This is a [Homebrew](https://brew.sh) tap for installing [LilyPond](https://lilypond.org) on macOS. There are also formulae for [Abjad](https://abjad.github.io) and [ly](https://github.com/frescobaldi/python-ly).
 
 To install LilyPond:
 
-1. Install [MacTeX](https://tug.org/mactex/) by running:
+1. On macOS Mojave and Big Sur (but not Catalina), you must first install [MacTeX](https://tug.org/mactex/) by running:
 
     ```sh
     brew install --cask mactex-no-gui
@@ -23,8 +21,7 @@ To install LilyPond:
 2. Run:
 
     ```sh
-    brew tap nwhetsell/lilypond
-    brew install lilypond
+    brew install nwhetsell/lilypond/lilypond
     ```
 
 You should now be able to run LilyPond:
@@ -34,17 +31,4 @@ lilypond --loglevel=ERROR --output=c-major-scale - <<EOS
 \relative { c' d e f g a b c }
 EOS
 open c-major-scale.pdf
-```
-
-MacTeX is required to build LilyPond, but not to run it. If you installed MacTeX
-using Homebrew, you can uninstall MacTeX by running:
-
-```sh
-brew uninstall --cask mactex-no-gui
-```
-
-or:
-
-```sh
-brew uninstall --cask mactex
 ```
