@@ -7,6 +7,11 @@ class GuileAT1 < Formula
   license "LGPL-2.1-or-later"
   revision 2
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/guile@1-1.8.8_2"
+    sha256 catalina: "f012a39e0676dc03d656e38080129c3087993778f8bfd5b44b17e75ba2ed7a37"
+  end
+
   keg_only :versioned_formula
 
   depends_on "bdw-gc"
