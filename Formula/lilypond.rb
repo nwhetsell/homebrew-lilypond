@@ -40,6 +40,11 @@ class Lilypond < Formula
                    "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
   revision 2
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-2.22.1_2"
+    sha256 catalina: "b5e61f787f116c2162baa7069658d2c42542a5234507762f866f668b384f7512"
+  end
+
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
     mirror "https://github.com/lilypond/lilypond.git"
