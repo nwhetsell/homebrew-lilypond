@@ -8,6 +8,11 @@ class Ly < Formula
   license "GPL-2.0-or-later"
   revision 1
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/ly-0.9.7_1"
+    sha256 cellar: :any_skip_relocation, catalina: "99429df75d9e0589673322548c930d6a614b0c1885c5400677937e4b9d2e6440"
+  end
+
   depends_on "python@3.9"
 
   def install
