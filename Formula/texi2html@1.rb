@@ -6,6 +6,11 @@ class Texi2htmlAT1 < Formula
   license "GPL-2.0-or-later"
   revision 1
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/texi2html@1-1.82_1"
+    sha256 cellar: :any_skip_relocation, catalina: "14b6b0d18e3f4a2eeae4c507131b39fa23904563025e41de1be85c69f68ca6be"
+  end
+
   keg_only :versioned_formula
 
   def install
