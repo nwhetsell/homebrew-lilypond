@@ -6,6 +6,11 @@ class Extractpdfmark < Formula
   license "GPL-3.0-or-later"
   revision 1
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/extractpdfmark-1.1.0_1"
+    sha256 cellar: :any, catalina: "f61a9d72e9b60cb057725691b7bce95a2fdabc1e4a762aae5e6cbdc49297e277"
+  end
+
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "gettext"
