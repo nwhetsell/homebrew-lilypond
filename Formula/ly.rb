@@ -6,6 +6,7 @@ class Ly < Formula
   url "https://files.pythonhosted.org/packages/9b/ed/e277509bb9f9376efe391f2f5a27da9840366d12a62bef30f44e5a24e0d9/python-ly-0.9.7.tar.gz"
   sha256 "d4d2b68eb0ef8073200154247cc9bd91ed7fb2671ac966ef3d2853281c15d7a8"
   license "GPL-2.0-or-later"
+  revision 1
 
   depends_on "python@3.9"
 
