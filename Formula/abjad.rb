@@ -6,7 +6,7 @@ class Abjad < Formula
   url "https://files.pythonhosted.org/packages/67/7f/9bfa1bb008820b96105f70e8e9dc0d68e019d14998456711a18f2e3a32df/abjad-3.4.tar.gz"
   sha256 "c97a21cb420c2332d86b38dc0825b1df34e358033ea0c7384cadd73726a9167a"
   license "GPL-3.0-only"
-  revision 1
+  revision 2
 
   depends_on "./lilypond"
   depends_on "python@3.9"
