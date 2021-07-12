@@ -4,6 +4,7 @@ class Texi2htmlAT1 < Formula
   url "https://download.savannah.gnu.org/releases/texi2html/texi2html-1.82.tar.gz"
   sha256 "6c7c94a2d88ffe218a33e91118c2b039336cbe3f2f8b4e3a78e4fd1502072936"
   license "GPL-2.0-or-later"
+  revision 1
 
   keg_only :versioned_formula
 
