@@ -15,14 +15,10 @@ class DejaVuFontsRequirement < Requirement
 
   def message
     <<~EOS
-      DejaVu fonts are required.
-
-      To install DejaVu fonts included with MacTeX, run:
+      DejaVu fonts are required. To install DejaVu fonts included with MacTeX:
         ln -s /Library/TeX/Root/texmf-dist/fonts/truetype/public/dejavu ~/Library/Fonts
-
-      To install DejaVu fonts as a cask, run:
-        brew tap homebrew/cask-fonts
-        brew install --cask font-dejavu
+      To install DejaVu fonts as a cask:
+        brew install --cask homebrew/cask-fonts/font-dejavu
     EOS
   end
 
