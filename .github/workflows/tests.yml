@@ -32,7 +32,8 @@ jobs:
 
       - name: Install MacTeX if necessary
         run: |
-          formulae=$(brew test-bot --dry-run --only-formulae | egrep --only-matching '^    testing_formulae  .+' | cut -c23-)
+          output_prefix='    testing_formulae  '
+          formulae=$(brew test-bot --dry-run --only-formulae | egrep "^$output_prefix.+" | cut -c$((${#output_prefix} + 1))-)
           if brew deps --include-requirements --union $formulae | grep --quiet ':MacTeX'; then
             brew install --cask mactex-no-gui
           fi
