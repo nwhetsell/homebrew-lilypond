@@ -37,8 +37,8 @@ class Lilypond < Formula
   revision 3
 
   bottle do
-    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-2.22.1_2"
-    sha256 catalina: "b5e61f787f116c2162baa7069658d2c42542a5234507762f866f668b384f7512"
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-2.22.1_3"
+    sha256 catalina: "e2f2a8855f4dd46b8af41886472ba9f661bb75fe46d3a8c0e13996eba2d4fe9b"
   end
 
   head do
