@@ -48,6 +48,8 @@ class Lilypond < Formula
 
   option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
 
+  deprecate! date: "2021-10-13", because: "lilypond is available in homebrew/core"
+
   depends_on "./dblatex" => :build
   depends_on "./extractpdfmark" => :build
   depends_on "./texi2html@1" => :build

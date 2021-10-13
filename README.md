@@ -1,34 +1,29 @@
 # homebrew-lilypond
 
-This is a [Homebrew](https://brew.sh) tap for installing [LilyPond](https://lilypond.org) on macOS. There are also formulae for [Abjad](https://abjad.github.io) and [ly](https://github.com/frescobaldi/python-ly).
+This was a [Homebrew](https://brew.sh) tap for installing [LilyPond](https://lilypond.org) on macOS. You should install [LilyPond from homebrew/core](https://formulae.brew.sh/formula/lilypond) instead of this tap.
 
-To install LilyPond:
-
-1. On macOS Mojave and Big Sur (but not Catalina), you must first install [MacTeX](https://tug.org/mactex/) by running:
-
-    ```sh
-    brew install --cask mactex-no-gui
-    ```
-
-    or:
-
-    ```sh
-    brew install --cask mactex
-    ```
-
-    or by downloading and running an installer from https://tug.org/mactex/mactex-download.html.
-
-2. Run:
-
-    ```sh
-    brew install nwhetsell/lilypond/lilypond
-    ```
-
-You should now be able to run LilyPond:
+To uninstall everything from this tap, run:
 
 ```sh
-lilypond --loglevel=ERROR --output=c-major-scale - <<EOS
-\relative { c' d e f g a b c }
-EOS
-open c-major-scale.pdf
+brew ls --formula --full-name | grep '^nwhetsell/lilypond/' | xargs brew uninstall
 ```
+
+To untap this tap, run:
+
+```sh
+brew untap nwhetsell/lilypond
+```
+
+After you’ve untapped this tap, you can reinstall LilyPond by running:
+
+```sh
+brew install lilypond
+```
+
+To (re)install [ly](https://github.com/frescobaldi/python-ly), run:
+
+```sh
+brew install ly
+```
+
+To (re)install [Abjad](https://abjad.github.io), follow the instructions at https://abjad.github.io/first_steps/macos.html.

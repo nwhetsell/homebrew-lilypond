@@ -14,6 +14,8 @@ class GuileAT1 < Formula
 
   keg_only :versioned_formula
 
+  deprecate! date: "2021-10-13", because: "nwhetsell/lilypond is no longer maintained"
+
   depends_on "bdw-gc"
   depends_on "gmp"
   depends_on "libffi"

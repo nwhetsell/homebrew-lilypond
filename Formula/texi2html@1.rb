@@ -13,6 +13,8 @@ class Texi2htmlAT1 < Formula
 
   keg_only :versioned_formula
 
+  deprecate! date: "2021-10-13", because: "nwhetsell/lilypond is no longer maintained"
+
   def install
     system "./configure", "--disable-dependency-tracking",
                           "--infodir=#{info}",

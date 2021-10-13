@@ -13,6 +13,8 @@ class Ly < Formula
     sha256 cellar: :any_skip_relocation, catalina: "99429df75d9e0589673322548c930d6a614b0c1885c5400677937e4b9d2e6440"
   end
 
+  deprecate! date: "2021-10-13", because: "ly is available in homebrew/core"
+
   depends_on "python@3.9"
 
   def install

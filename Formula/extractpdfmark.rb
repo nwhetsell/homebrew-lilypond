@@ -11,6 +11,8 @@ class Extractpdfmark < Formula
     sha256 cellar: :any, catalina: "f61a9d72e9b60cb057725691b7bce95a2fdabc1e4a762aae5e6cbdc49297e277"
   end
 
+  deprecate! date: "2021-10-13", because: "nwhetsell/lilypond is no longer maintained"
+
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "gettext"
