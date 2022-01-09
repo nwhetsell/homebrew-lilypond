@@ -13,7 +13,7 @@ class Abjad < Formula
     sha256 cellar: :any_skip_relocation, catalina: "4e488b3ccb3d50ff5cb3c8dad93897cfa1697c08f09eb51f1245ca512828f83d"
   end
 
-  depends_on "./lilypond"
+  depends_on "lilypond"
   depends_on "python@3.9"
   depends_on "six"
 
