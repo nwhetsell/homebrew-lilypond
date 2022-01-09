@@ -15,7 +15,6 @@ class Dblatex < Formula
   depends_on "texlive"
 
   def install
-    ENV.append_path "PATH", "/Library/TeX/texbin"
     system "/usr/bin/python", "setup.py", "install", "--prefix=#{prefix}"
     inreplace bin/"dblatex", "#!/usr/bin/env python", "#!/usr/bin/python"
   end
@@ -26,8 +25,6 @@ class Dblatex < Formula
         <title>hello, world</title>
       </book>
     EOS
-
-    ENV.append_path "PATH", "/Library/TeX/texbin"
 
     system bin/"dblatex", "test.xml"
     assert_predicate testpath/"test.pdf", :exist?
