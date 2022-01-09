@@ -1,5 +1,3 @@
-require_relative "../Library/MacTeXRequirement"
-
 class Dblatex < Formula
   desc "Transform DocBook XML to LaTeX"
   homepage "https://dblatex.sourceforge.io"
@@ -13,10 +11,8 @@ class Dblatex < Formula
     sha256 cellar: :any_skip_relocation, catalina: "b94b019bb592b8c93cfb8c90209479fcb9c06fa0c8e91356ecde220eb9690517"
   end
 
-  deprecate! date: "2021-10-13", because: "nwhetsell/lilypond is no longer maintained"
-
   depends_on "imagemagick"
-  depends_on MacTeXRequirement
+  depends_on "texlive"
 
   def install
     ENV.append_path "PATH", "/Library/TeX/texbin"

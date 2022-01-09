@@ -1,40 +1,16 @@
-require_relative "../Library/MacTeXRequirement"
-
-class DejaVuFontsRequirement < Requirement
-  fatal true
-
-  satisfy do
-    require "open3"
-    stdout, = Open3.capture2 "osascript", stdin_data: <<~EOS
-      use framework "AppKit"
-      return (current application's NSFontManager's sharedFontManager's availableFontFamilies) as list
-    EOS
-    fonts = stdout.chomp.split(/\s*,\s*/)
-    (["DejaVu Sans", "DejaVu Sans Mono", "DejaVu Serif"] - fonts).empty?
-  end
-
-  def message
-    <<~EOS
-      DejaVu fonts are required. To install DejaVu fonts included with MacTeX:
-        ln -s /Library/TeX/Root/texmf-dist/fonts/truetype/public/dejavu ~/Library/Fonts
-      To install DejaVu fonts as a cask:
-        brew install --cask homebrew/cask-fonts/font-dejavu
-    EOS
-  end
-
-  def display_s
-    "DejaVu fonts"
-  end
-end
-
 class Lilypond < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.22/lilypond-2.22.1.tar.gz"
+  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.5.tar.gz"
   sha256 "72ac2d54c310c3141c0b782d4e0bef9002d5519cf46632759b1f03ef6969cc30"
-  license all_of: ["GPL-3.0-or-later", "GPL-3.0-only", "OFL-1.1-RFN",
-                   "GFDL-1.3-no-invariants-or-later", :public_domain, "MIT"]
-  revision 3
+  license all_of: [
+    "GPL-3.0-or-later",
+    "GPL-3.0-only",
+    "OFL-1.1-RFN",
+    "GFDL-1.3-no-invariants-or-later",
+    :public_domain,
+    "MIT",
+  ]
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-2.22.1_3"
@@ -44,35 +20,32 @@ class Lilypond < Formula
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git"
     mirror "https://github.com/lilypond/lilypond.git"
+
+    depends_on "autoconf" => :build
   end
-
-  option "with-html-documentation", "Build HTML documentation (may take an hour or more)"
-
-  deprecate! date: "2021-10-13", because: "lilypond is available in homebrew/core"
 
   depends_on "./dblatex" => :build
   depends_on "./extractpdfmark" => :build
   depends_on "./texi2html@1" => :build
-  depends_on "autoconf" => :build
   depends_on "bison" => :build # bison >= 2.4.1 is required
-  depends_on DejaVuFontsRequirement => :build if build.with? "html-documentation"
   depends_on "fontforge" => :build
   depends_on "gettext" => :build
-  depends_on MacTeXRequirement => :build
+  depends_on "pkg-config" => :build
+  depends_on "t1utils" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
-  depends_on "./guile@1"
+  depends_on "texlive" => :build
   depends_on "fontconfig"
   depends_on "freetype"
   depends_on "ghostscript"
+  depends_on "guile@2"
   depends_on "imagemagick"
-  depends_on :macos
   depends_on "pango"
   depends_on "python@3.9"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
-  uses_from_macos "rsync" => :build
-  uses_from_macos "zip" => :build
+
+  conflicts_with "lilypond", because: "both install `lilypond` binaries"
 
   resource "font-urw-base35" do
     # In case it's already installed (and therefore possibly cached), use the
@@ -85,38 +58,29 @@ class Lilypond < Formula
   end
 
   def install
-    system "./autogen.sh", "--noconfigure"
-
-    inreplace "config.make.in",
-      %r{^\s*elispdir\s*=\s*\$\(datadir\)/emacs/site-lisp\s*$},
-      "elispdir = $(datadir)/emacs/site-lisp/lilypond"
+    system "./autogen.sh", "--noconfigure" if build.head?
 
     mkdir "build" do
       resource("font-urw-base35").stage buildpath/"urw"
 
-      ENV.append_path "PATH", "/Library/TeX/texbin"
-
+      texgyre_dir = "#{Formula["texlive"].opt_share}/texmf-dist/fonts/opentype/public/tex-gyre"
       system "../configure", "--prefix=#{prefix}",
-                             "--with-texgyre-dir=/Library/TeX/Root/texmf-dist/fonts/opentype/public/tex-gyre",
+                             "--datadir=#{share}",
+                             "--with-texgyre-dir=#{texgyre_dir}",
                              "--with-urwotf-dir=#{buildpath}/urw/fonts"
 
-      ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@1"].lib
+      ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@2"].opt_lib
 
       system "make"
       system "make", "install"
+
+      elisp.install share.glob("emacs/site-lisp/*.el")
 
       libexec.install bin/"lilypond"
 
       (bin/"lilypond").write_env_script libexec/"lilypond",
         GUILE_WARN_DEPRECATED: "no",
-        LTDL_LIBRARY_PATH:     "#{Formula["guile@1"].lib}:$LTDL_LIBRARY_PATH"
-
-      pkgshare.install_symlink version => "current"
-
-      if build.with? "html-documentation"
-        system "make", "doc"
-        system "make", "install-doc"
-      end
+        LTDL_LIBRARY_PATH:     "#{Formula["guile@2"].opt_lib}:$LTDL_LIBRARY_PATH"
     end
   end
 
