@@ -1,29 +1,24 @@
 # homebrew-lilypond
 
-This was a [Homebrew](https://brew.sh) tap for installing [LilyPond](https://lilypond.org) on macOS. You should install [LilyPond from homebrew/core](https://formulae.brew.sh/formula/lilypond) instead of this tap.
+This is a [Homebrew](https://brew.sh) tap for installing the unstable version of [LilyPond](https://lilypond.org). There is also a formula for [Abjad](https://abjad.github.io).
 
-To uninstall everything from this tap, run:
-
-```sh
-brew ls --formula --full-name | grep '^nwhetsell/lilypond/' | xargs brew uninstall
-```
-
-To untap this tap, run:
+To install the unstable version of LilyPond, run:
 
 ```sh
-brew untap nwhetsell/lilypond
+brew install nwhetsell/lilypond/lilypond-unstable
 ```
 
-After you’ve untapped this tap, you can reinstall LilyPond by running:
+To use the unstable version of LilyPond, you can either add it to your `PATH`, or run:
 
 ```sh
-brew install lilypond
+brew unlink lilypond; brew link lilypond-unstable
 ```
 
-To (re)install [ly](https://github.com/frescobaldi/python-ly), run:
+You should now be able to run the unstable version of LilyPond:
 
 ```sh
-brew install ly
+lilypond --loglevel=ERROR --output=c-major-scale - <<EOS
+\relative { c' d e f g a b c }
+EOS
+open c-major-scale.pdf
 ```
-
-To (re)install [Abjad](https://abjad.github.io), follow the instructions at https://abjad.github.io/first_steps/macos.html.
