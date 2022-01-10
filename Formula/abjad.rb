@@ -13,9 +13,7 @@ class Abjad < Formula
     sha256 cellar: :any_skip_relocation, catalina: "4e488b3ccb3d50ff5cb3c8dad93897cfa1697c08f09eb51f1245ca512828f83d"
   end
 
-  deprecate! date: "2021-10-13", because: "nwhetsell/lilypond is no longer maintained"
-
-  depends_on "./lilypond"
+  depends_on "lilypond"
   depends_on "python@3.9"
   depends_on "six"
 
@@ -25,23 +23,28 @@ class Abjad < Formula
   end
 
   resource "docutils" do
-    url "https://files.pythonhosted.org/packages/4c/17/559b4d020f4b46e0287a2eddf2d8ebf76318fd3bd495f1625414b052fdc9/docutils-0.17.1.tar.gz"
-    sha256 "686577d2e4c32380bb50cbb22f575ed742d58168cee37e99117a854bcd88f125"
+    url "https://files.pythonhosted.org/packages/57/b1/b880503681ea1b64df05106fc7e3c4e3801736cf63deffc6fa7fc5404cf5/docutils-0.18.1.tar.gz"
+    sha256 "679987caf361a7539d76e584cbeddc311e3aee937877c87346f31debc63e9d06"
   end
 
   resource "imagesize" do
-    url "https://files.pythonhosted.org/packages/e4/9f/0452b459c8ba97e07c3cd2bd243783936a992006cf4cd1353c314a927028/imagesize-1.2.0.tar.gz"
-    sha256 "b1f6b5a4eab1f73479a50fb79fcf729514a900c341d8503d62a62dbc4127a2b1"
+    url "https://files.pythonhosted.org/packages/f6/27/b147794d43249e8303a06f427e407a090696b65b81045e36f8873d8d8a42/imagesize-1.3.0.tar.gz"
+    sha256 "cd1750d452385ca327479d45b64d9c7729ecf0b3969a58148298c77092261f9d"
   end
 
   resource "Jinja2" do
-    url "https://files.pythonhosted.org/packages/39/11/8076571afd97303dfeb6e466f27187ca4970918d4b36d5326725514d3ed3/Jinja2-3.0.1.tar.gz"
-    sha256 "703f484b47a6af502e743c9122595cc812b0271f661722403114f71a79d0f5a4"
+    url "https://files.pythonhosted.org/packages/91/a5/429efc6246119e1e3fbf562c00187d04e83e54619249eb732bb423efa6c6/Jinja2-3.0.3.tar.gz"
+    sha256 "611bb273cd68f3b993fabdc4064fc858c5b47a973cb5aa7999ec1ba405c87cd7"
   end
 
   resource "MarkupSafe" do
     url "https://files.pythonhosted.org/packages/bf/10/ff66fea6d1788c458663a84d88787bae15d45daa16f6b3ef33322a51fc7e/MarkupSafe-2.0.1.tar.gz"
     sha256 "594c67807fb16238b30c44bdf74f36c02cdf22d1c8cda91ef8a0ed8dabf5620a"
+  end
+
+  resource "packaging" do
+    url "https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz"
+    sha256 "dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"
   end
 
   resource "ply" do
@@ -50,18 +53,18 @@ class Abjad < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/ba/6e/7a7c13c21d8a4a7f82ccbfe257a045890d4dbf18c023f985f565f97393e3/Pygments-2.9.0.tar.gz"
-    sha256 "a18f47b506a429f6f4b9df81bb02beab9ca21d0a5fee38ed15aef65f0545519f"
+    url "https://files.pythonhosted.org/packages/94/9c/cb656d06950268155f46d4f6ce25d7ffc51a0da47eadf1b164bbf23b718b/Pygments-2.11.2.tar.gz"
+    sha256 "4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"
   end
 
   resource "pytz" do
-    url "https://files.pythonhosted.org/packages/b0/61/eddc6eb2c682ea6fd97a7e1018a6294be80dba08fa28e7a3570148b4612d/pytz-2021.1.tar.gz"
-    sha256 "83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da"
+    url "https://files.pythonhosted.org/packages/e3/8e/1cde9d002f48a940b9d9d38820aaf444b229450c0854bdf15305ce4a3d1a/pytz-2021.3.tar.gz"
+    sha256 "acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326"
   end
 
   resource "quicktions" do
-    url "https://files.pythonhosted.org/packages/10/fa/5008e5a2eb8c891db681e4f0d50dff9895c32b4ed022b3ceb10160c788f2/quicktions-1.11.tar.gz"
-    sha256 "f66f0f6e8cc4eb3702fc7b4fb943db17c72f875bcb5c91f50af188d28d0aa2df"
+    url "https://files.pythonhosted.org/packages/fb/b5/60ed7190463a93e5a21483e42676517814e4d0d30bb4781cfabb3f45fe44/quicktions-1.12.tar.gz"
+    sha256 "5086e39769eb2d4a7f39fe4e70164d713ec851e65dc5078e6c59173826e5aa3c"
   end
 
   resource "roman" do
@@ -70,25 +73,25 @@ class Abjad < Formula
   end
 
   resource "Sphinx" do
-    url "https://files.pythonhosted.org/packages/8d/4d/8a80613d0ceefca5a84e2e30b29da7719d429b4adcdb793d86079fad3790/Sphinx-4.0.2.tar.gz"
-    sha256 "b5c2ae4120bf00c799ba9b3699bc895816d272d120080fbc967292f29b52b48c"
+    url "https://files.pythonhosted.org/packages/5f/70/83589844bd82a5de3a748757fb39b2440435716e6a295827b13967dfa97f/Sphinx-4.3.2.tar.gz"
+    sha256 "0a8836751a68306b3fe97ecbe44db786f8479c3bf4b80e3a7f5c838657b4698c"
   end
 
   resource "Unidecode" do
-    url "https://files.pythonhosted.org/packages/cd/31/245d8a384939aa0ee152c76fc62890f79f35fc41cd12839f5df268d9081d/Unidecode-1.2.0.tar.gz"
-    sha256 "8d73a97d387a956922344f6b74243c2c6771594659778744b2dbdaad8f6b727d"
+    url "https://files.pythonhosted.org/packages/41/a6/93288318cfae2fa0ca978dfe6bb94b22b7e9a9e98b6149a4af00b1e76ee8/Unidecode-1.3.2.tar.gz"
+    sha256 "669898c1528912bcf07f9819dc60df18d057f7528271e31f8ec28cc88ef27504"
   end
 
   resource "uqbar" do
-    url "https://files.pythonhosted.org/packages/1f/14/79995c7dcda1301822ec3c331fbb850150836e2e8c40e7207e44b7a99a44/uqbar-0.5.2.tar.gz"
-    sha256 "844edfe3ba9e6f43ef39fd4f13893a5817423374f510928524c7a618404c1dea"
+    url "https://files.pythonhosted.org/packages/63/21/3db2314384d664313d2f8bea43b322cf5ea4626ddbf6ddfaed80e1f904c7/uqbar-0.5.8.tar.gz"
+    sha256 "11b3ed16dc36d2fc5fe5958027d510fc96e698a14a15ec7414b954969e2f16af"
   end
 
   def install
     virtualenv_install_with_resources
 
     python_version = Language::Python.major_minor_version Formula["python@3.9"].bin/"python3"
-    (lib/"python#{python_version}/site-packages/homebrew-abjad.pth").write <<~EOS
+    (prefix/Language::Python.site_packages("python3")/"homebrew-abjad.pth").write <<~EOS
       import site; site.addsitedir('#{libexec}/lib/python#{python_version}/site-packages')
     EOS
   end
