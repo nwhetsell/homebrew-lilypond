@@ -45,7 +45,7 @@ class Lilypond < Formula
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
 
-  conflicts_with "lilypond", because: "both install `lilypond` binaries"
+  conflicts_with "homebrew/core/lilypond", because: "both install `lilypond` binaries"
 
   resource "font-urw-base35" do
     # In case it's already installed (and therefore possibly cached), use the
