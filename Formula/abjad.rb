@@ -85,8 +85,9 @@ class Abjad < Formula
   def install
     virtualenv_install_with_resources
 
+    python_version = Language::Python.major_minor_version Formula["python@3.9"].bin/"python3"
     (prefix/Language::Python.site_packages("python3")/"homebrew-abjad.pth").write <<~EOS
-      import site; site.addsitedir('#{libexec}')
+      import site; site.addsitedir('#{libexec}/lib/python#{python_version}/site-packages')
     EOS
   end
 
