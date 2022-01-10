@@ -18,7 +18,7 @@ class LilypondUnstable < Formula
   end
 
   head do
-    url "https://git.savannah.gnu.org/git/lilypond.git"
+    url "https://git.savannah.gnu.org/git/lilypond.git", branch: "master"
     mirror "https://github.com/lilypond/lilypond.git"
 
     depends_on "autoconf" => :build
