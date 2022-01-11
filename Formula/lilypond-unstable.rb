@@ -11,11 +11,7 @@ class LilypondUnstable < Formula
     :public_domain,
     "MIT",
   ]
-
-  bottle do
-    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-2.22.1_3"
-    sha256 catalina: "e2f2a8855f4dd46b8af41886472ba9f661bb75fe46d3a8c0e13996eba2d4fe9b"
-  end
+  revision 1
 
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git", branch: "master"
