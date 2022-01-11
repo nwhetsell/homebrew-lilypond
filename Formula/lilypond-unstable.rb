@@ -13,6 +13,11 @@ class LilypondUnstable < Formula
   ]
   revision 1
 
+  bottle do
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.23.5_1"
+    sha256 big_sur: "f22f2ae441f977f7d4f9fdc32c8d589e63187f75a9d55872fd303a29b2fb719d"
+  end
+
   head do
     url "https://git.savannah.gnu.org/git/lilypond.git", branch: "master"
     mirror "https://github.com/lilypond/lilypond.git"
