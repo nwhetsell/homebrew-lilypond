@@ -3,10 +3,9 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/67/7f/9bfa1bb008820b96105f70e8e9dc0d68e019d14998456711a18f2e3a32df/abjad-3.4.tar.gz"
-  sha256 "c97a21cb420c2332d86b38dc0825b1df34e358033ea0c7384cadd73726a9167a"
+  url "https://files.pythonhosted.org/packages/7c/cf/0f655ee245ed4abad50817c5b10ad91cf0f65866b1055c28f3dff88b4687/abjad-3.5.tar.gz"
+  sha256 "43c27caae8044d7e2d305e6d7a6a74cb76ede097efe542a73449a8bf1f92eaad"
   license "GPL-3.0-only"
-  revision 3
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.4_3"
@@ -14,7 +13,7 @@ class Abjad < Formula
   end
 
   depends_on "lilypond"
-  depends_on "python@3.9"
+  depends_on "python@3.10"
   depends_on "six"
 
   resource "Babel" do
@@ -63,8 +62,8 @@ class Abjad < Formula
   end
 
   resource "quicktions" do
-    url "https://files.pythonhosted.org/packages/fb/b5/60ed7190463a93e5a21483e42676517814e4d0d30bb4781cfabb3f45fe44/quicktions-1.12.tar.gz"
-    sha256 "5086e39769eb2d4a7f39fe4e70164d713ec851e65dc5078e6c59173826e5aa3c"
+    url "https://files.pythonhosted.org/packages/29/00/209cef20c7d6f87b93f7f47a894d9445794b564923572cdc5c2f55f66c67/quicktions-1.13.tar.gz"
+    sha256 "1f398c375b00523b12832eef36f5ff86ae3d2d99929d34186da9a34685de68bd"
   end
 
   resource "roman" do
@@ -73,8 +72,8 @@ class Abjad < Formula
   end
 
   resource "Sphinx" do
-    url "https://files.pythonhosted.org/packages/5f/70/83589844bd82a5de3a748757fb39b2440435716e6a295827b13967dfa97f/Sphinx-4.3.2.tar.gz"
-    sha256 "0a8836751a68306b3fe97ecbe44db786f8479c3bf4b80e3a7f5c838657b4698c"
+    url "https://files.pythonhosted.org/packages/c9/08/c2932e66460cfbc8973928d276dc82ccde2d24b365055eeda9f0afc1951e/Sphinx-4.4.0.tar.gz"
+    sha256 "6caad9786055cb1fa22b4a365c1775816b876f91966481765d7d50e9f0dd35cc"
   end
 
   resource "Unidecode" do
@@ -83,20 +82,20 @@ class Abjad < Formula
   end
 
   resource "uqbar" do
-    url "https://files.pythonhosted.org/packages/63/21/3db2314384d664313d2f8bea43b322cf5ea4626ddbf6ddfaed80e1f904c7/uqbar-0.5.8.tar.gz"
-    sha256 "11b3ed16dc36d2fc5fe5958027d510fc96e698a14a15ec7414b954969e2f16af"
+    url "https://files.pythonhosted.org/packages/c2/e7/da05fcecfbebf2dca4fd9140fdd7744c6b6cf1aede5148db6e924eac4f29/uqbar-0.5.9.tar.gz"
+    sha256 "d06d360268fca81f350c3d04d7084f358abdc5f53a25e5eb2ae116f05f478506"
   end
 
   def install
     virtualenv_install_with_resources
 
-    python_version = Language::Python.major_minor_version Formula["python@3.9"].bin/"python3"
-    (prefix/Language::Python.site_packages("python3")/"homebrew-abjad.pth").write <<~EOS
+    python_version = Language::Python.major_minor_version Formula["python@3.10"].bin/"python3"
+    (lib/"python#{python_version}/site-packages/homebrew-abjad.pth").write <<~EOS
       import site; site.addsitedir('#{libexec}/lib/python#{python_version}/site-packages')
     EOS
   end
 
   test do
-    system Formula["python@3.9"].bin/"python3", "-c", "import abjad"
+    system Formula["python@3.10"].bin/"python3", "-c", "import abjad"
   end
 end
