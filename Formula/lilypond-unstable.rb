@@ -13,8 +13,8 @@ class LilypondUnstable < Formula
   ]
 
   bottle do
-    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.23.5_1"
-    sha256 big_sur: "f22f2ae441f977f7d4f9fdc32c8d589e63187f75a9d55872fd303a29b2fb719d"
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.23.6"
+    sha256 big_sur: "70aecfbb464e8d2266b4b29b7b30f4963122832072b2ccaa8f04d1e9a4a88951"
   end
 
   head do
