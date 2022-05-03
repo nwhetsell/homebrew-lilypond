@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/64/9a/aba04208002e57c8753f818151ac64d93bcfe0efec4adb0191714f239bd7/abjad-3.7.tar.gz"
-  sha256 "dcdfd9e948011bc5a2fa158abee056b2ce36ae5c1a8afb261e5adfafe63cfeeb"
+  url "https://files.pythonhosted.org/packages/19/df/a83cacb70ae0afaba74496c115622250c93e6e3e3890e9724e61360a4ef5/abjad-3.9.tar.gz"
+  sha256 "6ca90c7182cbfbb17099c0a6461fc5204ea7ba4420ca6aeec25b0c25fb1f9e7b"
   license "GPL-3.0-only"
 
   bottle do
@@ -12,13 +12,13 @@ class Abjad < Formula
     sha256 cellar: :any_skip_relocation, big_sur: "e9c3ae39e6df3154d806d9daa7cc99e9964db092dc65e973047c4ac57bf59326"
   end
 
-  depends_on "lilypond"
+  depends_on "./lilypond-unstable"
   depends_on "python@3.10"
   depends_on "six"
 
   resource "Babel" do
-    url "https://files.pythonhosted.org/packages/17/e6/ec9aa6ac3d00c383a5731cc97ed7c619d3996232c977bb8326bcbb6c687e/Babel-2.9.1.tar.gz"
-    sha256 "bc0c176f9f6a994582230df350aa6e05ba2ebe4b3ac317eab29d9be5d2768da0"
+    url "https://files.pythonhosted.org/packages/23/a6/a616817c8e4fb1a69f7e8aae9fc7fce1a147e1a492f45b6fa0b7d6823178/Babel-2.10.1.tar.gz"
+    sha256 "98aeaca086133efb3e1e2aad0396987490c8425929ddbcfe0550184fdc54cd13"
   end
 
   resource "docutils" do
@@ -32,8 +32,8 @@ class Abjad < Formula
   end
 
   resource "Jinja2" do
-    url "https://files.pythonhosted.org/packages/89/e3/b36266381ae7a1310a653bb85f4f3658c462a69634fa9b2fef76252a50ed/Jinja2-3.1.1.tar.gz"
-    sha256 "640bed4bb501cbd17194b3cace1dc2126f5b619cf068a726b98192a0fde74ae9"
+    url "https://files.pythonhosted.org/packages/7a/ff/75c28576a1d900e87eb6335b063fab47a8ef3c8b4d88524c4bf78f670cce/Jinja2-3.1.2.tar.gz"
+    sha256 "31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852"
   end
 
   resource "MarkupSafe" do
@@ -52,8 +52,8 @@ class Abjad < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/94/9c/cb656d06950268155f46d4f6ce25d7ffc51a0da47eadf1b164bbf23b718b/Pygments-2.11.2.tar.gz"
-    sha256 "4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"
+    url "https://files.pythonhosted.org/packages/59/0f/eb10576eb73b5857bc22610cdfc59e424ced4004fe7132c8f2af2cc168d3/Pygments-2.12.0.tar.gz"
+    sha256 "5eb116118f9612ff1ee89ac96437bb6b49e8f04d8a13b514ba26f620208e26eb"
   end
 
   resource "pytz" do
