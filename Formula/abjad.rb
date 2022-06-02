@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/19/df/a83cacb70ae0afaba74496c115622250c93e6e3e3890e9724e61360a4ef5/abjad-3.9.tar.gz"
-  sha256 "6ca90c7182cbfbb17099c0a6461fc5204ea7ba4420ca6aeec25b0c25fb1f9e7b"
+  url "https://files.pythonhosted.org/packages/8e/04/cd4736e8ad35b9f633ab9477b8f4f8608de73ab9d77d1ce9bf1e8086053c/abjad-3.10.tar.gz"
+  sha256 "cda76470b7cd922ddd03b91e6312ac0d7a8d3481e802a43014d847a71cf8106a"
   license "GPL-3.0-only"
 
   bottle do
@@ -22,8 +22,8 @@ class Abjad < Formula
   end
 
   resource "docutils" do
-    url "https://files.pythonhosted.org/packages/57/b1/b880503681ea1b64df05106fc7e3c4e3801736cf63deffc6fa7fc5404cf5/docutils-0.18.1.tar.gz"
-    sha256 "679987caf361a7539d76e584cbeddc311e3aee937877c87346f31debc63e9d06"
+    url "https://files.pythonhosted.org/packages/4c/17/559b4d020f4b46e0287a2eddf2d8ebf76318fd3bd495f1625414b052fdc9/docutils-0.17.1.tar.gz"
+    sha256 "686577d2e4c32380bb50cbb22f575ed742d58168cee37e99117a854bcd88f125"
   end
 
   resource "imagesize" do
@@ -72,8 +72,8 @@ class Abjad < Formula
   end
 
   resource "Sphinx" do
-    url "https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz"
-    sha256 "7bf8ca9637a4ee15af412d1a1d9689fec70523a68ca9bb9127c2f3eeb344e2e6"
+    url "https://files.pythonhosted.org/packages/ea/c0/8a5833e4e2f5924f96c34d0a546ef22ac487c4c423a4c1b93f72186683bb/Sphinx-5.0.0.tar.gz"
+    sha256 "464d9c1bd5613bcebe76b46658763f3f3dbb184da7406e632a84596d3cd8ee90"
   end
 
   resource "Unidecode" do
