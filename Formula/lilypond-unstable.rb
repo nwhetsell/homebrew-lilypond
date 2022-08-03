@@ -51,10 +51,8 @@ class LilypondUnstable < Formula
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
 
-    texgyre_dir = "#{Formula["texlive"].opt_share}/texmf-dist/fonts/opentype/public/tex-gyre"
     system "./configure", "--prefix=#{prefix}",
                           "--datadir=#{share}",
-                          "--with-texgyre-dir=#{texgyre_dir}",
                           "--disable-documentation"
 
     ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@2"].opt_lib
