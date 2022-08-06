@@ -11,6 +11,7 @@ class LilypondUnstable < Formula
     :public_domain,
     "MIT",
   ]
+  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.23.11"
@@ -43,7 +44,7 @@ class LilypondUnstable < Formula
   depends_on "guile@2"
   depends_on "imagemagick"
   depends_on "pango"
-  depends_on "python@3.9"
+  depends_on "python@3.10"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
