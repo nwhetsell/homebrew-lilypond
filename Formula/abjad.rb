@@ -8,8 +8,9 @@ class Abjad < Formula
   license "GPL-3.0-only"
 
   bottle do
-    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.10"
-    sha256 cellar: :any_skip_relocation, big_sur: "367efda4f5f0966455fc76161534728bdbdec38690d522989604abd29f4894e9"
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.11"
+    sha256 cellar: :any_skip_relocation, monterey: "a0464cff474e15d5cf8caff3c5bd583fb6f7c24dda8fc4895711635cb7902bb4"
+    sha256 cellar: :any_skip_relocation, big_sur:  "5f722e160a83f7aced9f749959f3f74cea3e8b6a3cd9e051112945d7b926ee5e"
   end
 
   depends_on "./lilypond-unstable"
