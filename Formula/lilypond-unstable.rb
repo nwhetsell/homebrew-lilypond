@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.12.tar.gz"
-  sha256 "48b67dfc9c9b96d77cfb51c0364f294c61d16fb32e6522490c363f4b82b0cff9"
+  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.13.tar.gz"
+  sha256 "17a9d1ad0ec7d1b7501b742d6b65ef371c88007537a7b8cbc9d54573270ddf0a"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -40,7 +40,7 @@ class LilypondUnstable < Formula
   depends_on "fontconfig"
   depends_on "freetype"
   depends_on "ghostscript"
-  depends_on "guile@2"
+  depends_on "guile"
   depends_on "imagemagick"
   depends_on "pango"
   depends_on "python@3.10"
@@ -51,21 +51,21 @@ class LilypondUnstable < Formula
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
 
-    system "./configure", "--prefix=#{prefix}",
-                          "--datadir=#{share}",
-                          "--disable-documentation"
+    args = %W[
+      --datadir=#{share}
+      --disable-documentation
+      --prefix=#{prefix}
+    ]
+    args << "--with-flexlexer-dir=#{Formula["flex"].include}" if OS.linux?
+    args << "GUILE_FLAVOR=guile-3.0"
+    system "./configure", *args
 
-    ENV.prepend_path "LTDL_LIBRARY_PATH", Formula["guile@2"].opt_lib
     system "make"
+    system "make", "bytecode"
     system "make", "install"
+    system "make", "install-bytecode"
 
     elisp.install share.glob("emacs/site-lisp/*.el")
-
-    libexec.install bin/"lilypond"
-
-    (bin/"lilypond").write_env_script libexec/"lilypond",
-      GUILE_WARN_DEPRECATED: "no",
-      LTDL_LIBRARY_PATH:     "#{Formula["guile@2"].opt_lib}:$LTDL_LIBRARY_PATH"
   end
 
   test do
