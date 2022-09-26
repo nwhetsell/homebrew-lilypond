@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/e3/ee/3b6b8b10114a0fa05cee1d2f0885559a60d052e3672a9254f3ae18da491b/abjad-3.12.tar.gz"
-  sha256 "a9641107181c095e1925b3905f0e4d42aa2ca27c0e2560c6ad93025b217c8cef"
+  url "https://files.pythonhosted.org/packages/d8/41/52d7ed9cbb79b8b6b445159b934598dcc20a917e084bb3c5cdbf9b060269/abjad-3.13.tar.gz"
+  sha256 "b114cc75e3f90661f7ecf0b16a4da0b733c219a93d1082bd5565c74c3564196d"
   license "GPL-3.0-only"
 
   bottle do
