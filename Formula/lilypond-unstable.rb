@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.14.tar.gz"
-  sha256 "ec8b50ed28971c34b4179c8d317688103f43b75d28b6a5738f065d217294f1a3"
+  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.80.tar.gz"
+  sha256 "2b0c80d4ca73a7208eb593682a0cef79bae5ee86780f3c24b18c995c9264cff9"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -40,7 +40,6 @@ class LilypondUnstable < Formula
   depends_on "freetype"
   depends_on "ghostscript"
   depends_on "guile"
-  depends_on "imagemagick"
   depends_on "pango"
   depends_on "python@3.10"
 
@@ -54,14 +53,15 @@ class LilypondUnstable < Formula
       --datadir=#{share}
       --disable-documentation
       --prefix=#{prefix}
+      --with-flexlexer-dir=#{Formula["flex"].include}
+      GUILE_FLAVOR=guile-3.0
     ]
-    args << "--with-flexlexer-dir=#{Formula["flex"].include}" if OS.linux?
-    args << "GUILE_FLAVOR=guile-3.0"
     system "./configure", *args
 
     system "make"
-    system "make", "bytecode"
     system "make", "install"
+
+    system "make", "bytecode"
     system "make", "install-bytecode"
 
     elisp.install share.glob("emacs/site-lisp/*.el")
