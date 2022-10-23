@@ -40,7 +40,6 @@ class LilypondUnstable < Formula
   depends_on "freetype"
   depends_on "ghostscript"
   depends_on "guile"
-  depends_on "imagemagick"
   depends_on "pango"
   depends_on "python@3.10"
 
@@ -54,13 +53,14 @@ class LilypondUnstable < Formula
       --datadir=#{share}
       --disable-documentation
       --prefix=#{prefix}
+      --with-flexlexer-dir=#{Formula["flex"].include}
+      GUILE_FLAVOR=guile-3.0
     ]
-    args << "--with-flexlexer-dir=#{Formula["flex"].include}" if OS.linux?
-    args << "GUILE_FLAVOR=guile-3.0"
     system "./configure", *args
 
     system "make"
     system "make", "install"
+
     system "make", "bytecode"
     system "make", "install-bytecode"
 
