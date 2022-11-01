@@ -49,14 +49,11 @@ class LilypondUnstable < Formula
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
 
-    args = %W[
-      --datadir=#{share}
-      --disable-documentation
-      --prefix=#{prefix}
-      --with-flexlexer-dir=#{Formula["flex"].include}
-      GUILE_FLAVOR=guile-3.0
-    ]
-    system "./configure", *args
+    system "./configure", "--datadir=#{share}",
+                          "--disable-documentation",
+                          "--prefix=#{prefix}",
+                          "--with-flexlexer-dir=#{Formula["flex"].include}",
+                          "GUILE_FLAVOR=guile-3.0"
 
     system "make"
     system "make", "install"
