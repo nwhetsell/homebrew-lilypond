@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/d8/41/52d7ed9cbb79b8b6b445159b934598dcc20a917e084bb3c5cdbf9b060269/abjad-3.13.tar.gz"
-  sha256 "b114cc75e3f90661f7ecf0b16a4da0b733c219a93d1082bd5565c74c3564196d"
+  url "https://files.pythonhosted.org/packages/44/51/66916b778b7b4e40f9f31172a32ff09a6cf32c1d3af96559bb6cbc34b280/abjad-3.14.tar.gz"
+  sha256 "b621e9a9aa78c10cc7decca6906b4b2958377a320cef53e402967fc52ee1654c"
   license "GPL-3.0-only"
 
   bottle do
@@ -16,11 +16,10 @@ class Abjad < Formula
 
   depends_on "./lilypond-unstable"
   depends_on "python@3.10"
-  depends_on "six"
 
   resource "Babel" do
-    url "https://files.pythonhosted.org/packages/51/27/81e9cf804a34a550a47cc2f0f57fe4935281d479ae3a0ac093d69476f221/Babel-2.10.3.tar.gz"
-    sha256 "7614553711ee97490f732126dc077f8d0ae084ebc6a96e23db1482afabdb2c51"
+    url "https://files.pythonhosted.org/packages/ff/80/45b42203ecc32c8de281f52e3ec81cb5e4ef16127e9e8543089d8b1649fb/Babel-2.11.0.tar.gz"
+    sha256 "5ef4b3226b0180dedded4229651c8b0e1a3a6a2837d45a073272f313e4cf97f6"
   end
 
   resource "docutils" do
@@ -59,13 +58,8 @@ class Abjad < Formula
   end
 
   resource "pytz" do
-    url "https://files.pythonhosted.org/packages/24/0c/401283bb1499768e33ddd2e1a35817c775405c1f047a9dc088a29ce2ea5d/pytz-2022.2.1.tar.gz"
-    sha256 "cea221417204f2d1a2aa03ddae3e867921971d0d76f14d87abb4414415bbdcf5"
-  end
-
-  resource "quicktions" do
-    url "https://files.pythonhosted.org/packages/29/00/209cef20c7d6f87b93f7f47a894d9445794b564923572cdc5c2f55f66c67/quicktions-1.13.tar.gz"
-    sha256 "1f398c375b00523b12832eef36f5ff86ae3d2d99929d34186da9a34685de68bd"
+    url "https://files.pythonhosted.org/packages/76/63/1be349ff0a44e4795d9712cc0b2d806f5e063d4d34631b71b832fac715a8/pytz-2022.6.tar.gz"
+    sha256 "e89512406b793ca39f5971bc999cc538ce125c0e51c27941bef4568b460095e2"
   end
 
   resource "roman" do
@@ -74,13 +68,13 @@ class Abjad < Formula
   end
 
   resource "Sphinx" do
-    url "https://files.pythonhosted.org/packages/3a/30/ac07935542607c876f3fcee1c1ab043d253332567009994a1bf71d9b55cd/Sphinx-5.1.1.tar.gz"
-    sha256 "ba3224a4e206e1fbdecf98a4fae4992ef9b24b85ebf7b584bb340156eaf08d89"
+    url "https://files.pythonhosted.org/packages/af/b2/02a43597980903483fe5eb081ee8e0ba2bb62ea43a70499484343795f3bf/Sphinx-5.3.0.tar.gz"
+    sha256 "51026de0a9ff9fc13c05d74913ad66047e104f56a129ff73e174eb5c3ee794b5"
   end
 
   resource "Unidecode" do
-    url "https://files.pythonhosted.org/packages/41/16/ee78864c2c2ba9bddba3978baa378f83270c8b7810eb7900f84e62a9ffac/Unidecode-1.3.4.tar.gz"
-    sha256 "8e4352fb93d5a735c788110d2e7ac8e8031eb06ccbfe8d324ab71735015f9342"
+    url "https://files.pythonhosted.org/packages/0b/25/37c77fc07821cd06592df3f18281f5e716bc891abd6822ddb9ff941f821e/Unidecode-1.3.6.tar.gz"
+    sha256 "fed09cf0be8cf415b391642c2a5addfc72194407caee4f98719e40ec2a72b830"
   end
 
   resource "uqbar" do
