@@ -93,6 +93,6 @@ class Abjad < Formula
   end
 
   test do
-    system Formula["python@3.11"].bin/"python3", "-c", "import abjad"
+    system Formula["python@3.11"].bin/"python3.11", "-c", "import abjad"
   end
 end
