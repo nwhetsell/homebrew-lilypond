@@ -6,6 +6,7 @@ class Abjad < Formula
   url "https://files.pythonhosted.org/packages/44/51/66916b778b7b4e40f9f31172a32ff09a6cf32c1d3af96559bb6cbc34b280/abjad-3.14.tar.gz"
   sha256 "b621e9a9aa78c10cc7decca6906b4b2958377a320cef53e402967fc52ee1654c"
   license "GPL-3.0-only"
+  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.14"
@@ -15,7 +16,7 @@ class Abjad < Formula
   end
 
   depends_on "./lilypond-unstable"
-  depends_on "python@3.10"
+  depends_on "python@3.11"
 
   resource "Babel" do
     url "https://files.pythonhosted.org/packages/ff/80/45b42203ecc32c8de281f52e3ec81cb5e4ef16127e9e8543089d8b1649fb/Babel-2.11.0.tar.gz"
@@ -85,13 +86,13 @@ class Abjad < Formula
   def install
     virtualenv_install_with_resources
 
-    python_version = Language::Python.major_minor_version Formula["python@3.10"].bin/"python3"
+    python_version = Language::Python.major_minor_version Formula["python@3.11"].bin/"python3"
     (lib/"python#{python_version}/site-packages/homebrew-abjad.pth").write <<~EOS
       import site; site.addsitedir('#{libexec}/lib/python#{python_version}/site-packages')
     EOS
   end
 
   test do
-    system Formula["python@3.10"].bin/"python3", "-c", "import abjad"
+    system Formula["python@3.11"].bin/"python3.11", "-c", "import abjad"
   end
 end
