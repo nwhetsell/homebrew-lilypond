@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.80.tar.gz"
-  sha256 "2b0c80d4ca73a7208eb593682a0cef79bae5ee86780f3c24b18c995c9264cff9"
+  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.81.tar.gz"
+  sha256 "7428b9a7e4712b775ce456dfc9ea985c092b293231f76314db3d815cf9f1f4b1"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -11,7 +11,6 @@ class LilypondUnstable < Formula
     :public_domain,
     "MIT",
   ]
-  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.23.80_1"
