@@ -83,16 +83,22 @@ class Abjad < Formula
     sha256 "975a10d710f30a3e7db2a8f9948aba259f875b852424fce5bfc6e8b69e97736f"
   end
 
+  def python3
+    deps.map(&:to_formula)
+        .find { |f| f.name.match?(/^python@\d\.\d+$/) }
+        .opt_libexec/"bin/python"
+  end
+
   def install
     virtualenv_install_with_resources
 
-    python_version = Language::Python.major_minor_version Formula["python@3.11"].bin/"python3"
-    (lib/"python#{python_version}/site-packages/homebrew-abjad.pth").write <<~EOS
+    python_version = Language::Python.major_minor_version(python3)
+    (prefix/Language::Python.site_packages(python3)/"homebrew-abjad.pth").write <<~EOS
       import site; site.addsitedir('#{libexec}/lib/python#{python_version}/site-packages')
     EOS
   end
 
   test do
-    system Formula["python@3.11"].bin/"python3.11", "-c", "import abjad"
+    system python3, "-c", "import abjad"
   end
 end
