@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.23/lilypond-2.23.82.tar.gz"
-  sha256 "043c736ffe4e783dbb3b134d38192f87fe78d2bd2a8287c7cbbdfd7acc5a22c3"
+  url "https://lilypond.org/download/sources/v2.25/lilypond-2.25.0.tar.gz"
+  sha256 "b6ea9272c5fcc2ad663f120163e208b14fe59743d40f2578ec016c178ecf1826"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -51,9 +51,9 @@ class LilypondUnstable < Formula
 
     system "./configure", "--datadir=#{share}",
                           "--disable-documentation",
-                          "--prefix=#{prefix}",
                           "--with-flexlexer-dir=#{Formula["flex"].include}",
-                          "GUILE_FLAVOR=guile-3.0"
+                          "GUILE_FLAVOR=guile-3.0",
+                          *std_configure_args
 
     system "make"
     system "make", "install"
