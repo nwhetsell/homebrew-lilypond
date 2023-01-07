@@ -11,6 +11,7 @@ class LilypondUnstable < Formula
     :public_domain,
     "MIT",
   ]
+  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.0"
@@ -32,6 +33,7 @@ class LilypondUnstable < Formula
   depends_on "bison" => :build # bison >= 2.4.1 is required
   depends_on "fontforge" => :build
   depends_on "gettext" => :build
+  depends_on "libpthread-stubs" => :build
   depends_on "pkg-config" => :build
   depends_on "t1utils" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
@@ -45,6 +47,11 @@ class LilypondUnstable < Formula
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
+
+  resource "font-urw-base35" do
+    url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/refs/tags/20200910.tar.gz"
+    sha256 "e0d9b7f11885fdfdc4987f06b2aa0565ad2a4af52b22e5ebf79e1a98abd0ae2f"
+  end
 
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
@@ -62,11 +69,41 @@ class LilypondUnstable < Formula
     system "make", "install-bytecode"
 
     elisp.install share.glob("emacs/site-lisp/*.el")
+
+    fonts = share/"lilypond"/version/"fonts/otf"
+
+    resource("font-urw-base35").stage do
+      ["C059", "NimbusMonoPS", "NimbusSans"].each do |name|
+        Dir["fonts/#{name}-*.otf"].each do |font|
+          fonts.install font
+        end
+      end
+    end
+
+    ["cursor", "heros", "schola"].each do |name|
+      cp Dir[Formula["texlive"].share/"texmf-dist/fonts/opentype/public/tex-gyre/texgyre#{name}-*.otf"], fonts
+    end
   end
 
   test do
     (testpath/"test.ly").write "\\relative { c' d e f g a b c }"
     system bin/"lilypond", "--loglevel=ERROR", "test.ly"
     assert_predicate testpath/"test.pdf", :exist?
+
+    output = shell_output("#{bin}/lilypond --define-default=show-available-fonts 2>&1")
+    output = output.encode("UTF-8", invalid: :replace, replace: "")
+    fonts = {
+      "C059"            => ["Roman", "Bold", "Italic", "Bold Italic"],
+      "Nimbus Mono PS"  => ["Regular", "Bold", "Italic", "Bold Italic"],
+      "Nimbus Sans"     => ["Regular", "Bold", "Italic", "Bold Italic"],
+      "TeX Gyre Cursor" => ["Regular", "Bold", "Italic", "Bold Italic"],
+      "TeX Gyre Heros"  => ["Regular", "Bold", "Italic", "Bold Italic"],
+      "TeX Gyre Schola" => ["Regular", "Bold", "Italic", "Bold Italic"],
+    }
+    fonts.each do |family, styles|
+      styles.each do |style|
+        assert_match(/^\s*#{family}:style=#{style}$/, output)
+      end
+    end
   end
 end
