@@ -10,6 +10,8 @@ class LilypondUnstable < Formula
     "GFDL-1.3-no-invariants-or-later",
     :public_domain,
     "MIT",
+    "AGPL-3.0-only",
+    "LPPL-1.3c",
   ]
   revision 1
 
