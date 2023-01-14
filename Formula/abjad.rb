@@ -3,10 +3,9 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/44/51/66916b778b7b4e40f9f31172a32ff09a6cf32c1d3af96559bb6cbc34b280/abjad-3.14.tar.gz"
-  sha256 "b621e9a9aa78c10cc7decca6906b4b2958377a320cef53e402967fc52ee1654c"
+  url "https://files.pythonhosted.org/packages/79/e3/ed8c2a704dcc9c419023315f9ec122edc24981eed64b4739d88b7d89e5ce/abjad-3.15.tar.gz"
+  sha256 "644f311868a7435d7abe708e079ab60c4ed954234ae5799ff3f4d36c39829449"
   license "GPL-3.0-only"
-  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.14_1"
@@ -15,7 +14,7 @@ class Abjad < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "de177a68a2ec42491e96650824f556050e9ba52efb4ef083da0e7618ed6c8f72"
   end
 
-  depends_on "./lilypond-unstable"
+  depends_on "lilypond"
   depends_on "python@3.11"
 
   resource "Babel" do
@@ -44,8 +43,8 @@ class Abjad < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz"
-    sha256 "dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"
+    url "https://files.pythonhosted.org/packages/47/d5/aca8ff6f49aa5565df1c826e7bf5e85a6df852ee063600c1efa5b932968c/packaging-23.0.tar.gz"
+    sha256 "b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"
   end
 
   resource "ply" do
@@ -54,13 +53,13 @@ class Abjad < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/e0/ef/5905cd3642f2337d44143529c941cc3a02e5af16f0f65f81cbef7af452bb/Pygments-2.13.0.tar.gz"
-    sha256 "56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"
+    url "https://files.pythonhosted.org/packages/da/6a/c427c06913204e24de28de5300d3f0e809933f376e0b7df95194b2bb3f71/Pygments-2.14.0.tar.gz"
+    sha256 "b3ed06a9e8ac9a9aae5a6f5dbe78a8a58655d17b43b93c078f094ddc476ae297"
   end
 
   resource "pytz" do
-    url "https://files.pythonhosted.org/packages/76/63/1be349ff0a44e4795d9712cc0b2d806f5e063d4d34631b71b832fac715a8/pytz-2022.6.tar.gz"
-    sha256 "e89512406b793ca39f5971bc999cc538ce125c0e51c27941bef4568b460095e2"
+    url "https://files.pythonhosted.org/packages/03/3e/dc5c793b62c60d0ca0b7e58f1fdd84d5aaa9f8df23e7589b39cc9ce20a03/pytz-2022.7.1.tar.gz"
+    sha256 "01a0681c4b9684a28304615eba55d1ab31ae00bf68ec157ec3708a8182dbbcd0"
   end
 
   resource "roman" do
@@ -79,8 +78,8 @@ class Abjad < Formula
   end
 
   resource "uqbar" do
-    url "https://files.pythonhosted.org/packages/46/fc/ac446855b4672af596f154aaadec46bd76aa52b3f0b64d15268588245ca5/uqbar-0.6.3.tar.gz"
-    sha256 "975a10d710f30a3e7db2a8f9948aba259f875b852424fce5bfc6e8b69e97736f"
+    url "https://files.pythonhosted.org/packages/0c/4f/9fbac7de674e963fd4ace54815f78bc9c570a63a3e43fbd30fee2762dd5a/uqbar-0.6.8.tar.gz"
+    sha256 "a2356c472df0dea428fbaffd9877ff68e1772918045c7a98c84a387601c95a20"
   end
 
   def python3
