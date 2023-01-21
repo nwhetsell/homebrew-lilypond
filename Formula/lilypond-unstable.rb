@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/sources/v2.25/lilypond-2.25.0.tar.gz"
-  sha256 "b6ea9272c5fcc2ad663f120163e208b14fe59743d40f2578ec016c178ecf1826"
+  url "https://lilypond.org/download/sources/v2.25/lilypond-2.25.1.tar.gz"
+  sha256 "0dc858fb8f9b588bd365be2ff6afdf02a4ad91bb311e1bedcb77aeaf4645615b"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -13,7 +13,6 @@ class LilypondUnstable < Formula
     "AGPL-3.0-only",
     "LPPL-1.3c",
   ]
-  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.0_1"
@@ -94,15 +93,15 @@ class LilypondUnstable < Formula
 
     output = shell_output("#{bin}/lilypond --define-default=show-available-fonts 2>&1")
     output = output.encode("UTF-8", invalid: :replace, replace: "")
-    fonts = {
-      "C059"            => ["Roman", "Bold", "Italic", "Bold Italic"],
-      "Nimbus Mono PS"  => ["Regular", "Bold", "Italic", "Bold Italic"],
-      "Nimbus Sans"     => ["Regular", "Bold", "Italic", "Bold Italic"],
-      "TeX Gyre Cursor" => ["Regular", "Bold", "Italic", "Bold Italic"],
-      "TeX Gyre Heros"  => ["Regular", "Bold", "Italic", "Bold Italic"],
-      "TeX Gyre Schola" => ["Regular", "Bold", "Italic", "Bold Italic"],
-    }
-    fonts.each do |family, styles|
+    common_styles = ["Regular", "Bold", "Italic", "Bold Italic"]
+    {
+      "C059"            => ["Roman", *common_styles[2..]],
+      "Nimbus Mono PS"  => common_styles,
+      "Nimbus Sans"     => common_styles,
+      "TeX Gyre Cursor" => common_styles,
+      "TeX Gyre Heros"  => common_styles,
+      "TeX Gyre Schola" => common_styles,
+    }.each do |family, styles|
       styles.each do |style|
         assert_match(/^\s*#{family}:style=#{style}$/, output)
       end
