@@ -4,6 +4,8 @@ on:
     branches:
       - master
   pull_request:
+env:
+  HOMEBREW_NO_INSTALL_FROM_API: 1
 jobs:
   test-bot:
     runs-on: ${{ matrix.os }}
