@@ -95,7 +95,7 @@ class LilypondUnstable < Formula
     output = output.encode("UTF-8", invalid: :replace, replace: "")
     common_styles = ["Regular", "Bold", "Italic", "Bold Italic"]
     {
-      "C059"            => ["Roman", *common_styles[2..]],
+      "C059"            => ["Roman", *common_styles[1..]],
       "Nimbus Mono PS"  => common_styles,
       "Nimbus Sans"     => common_styles,
       "TeX Gyre Cursor" => common_styles,
