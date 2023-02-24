@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/79/e3/ed8c2a704dcc9c419023315f9ec122edc24981eed64b4739d88b7d89e5ce/abjad-3.15.tar.gz"
-  sha256 "644f311868a7435d7abe708e079ab60c4ed954234ae5799ff3f4d36c39829449"
+  url "https://files.pythonhosted.org/packages/51/e2/7858149d51a4c64310ae89e7655cfb7789f86f5a539dd9248931e475157d/abjad-3.16.tar.gz"
+  sha256 "26c1d610f1aedce5eab681847e9fc0b3fe6e86fabc89ed6d11423a1c0364a02b"
   license "GPL-3.0-only"
 
   bottle do
@@ -38,8 +38,8 @@ class Abjad < Formula
   end
 
   resource "MarkupSafe" do
-    url "https://files.pythonhosted.org/packages/1d/97/2288fe498044284f39ab8950703e88abbac2abbdf65524d576157af70556/MarkupSafe-2.1.1.tar.gz"
-    sha256 "7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"
+    url "https://files.pythonhosted.org/packages/95/7e/68018b70268fb4a2a605e2be44ab7b4dd7ce7808adae6c5ef32e34f4b55a/MarkupSafe-2.1.2.tar.gz"
+    sha256 "abcabc8c2b26036d62d4c746381a6f7cf60aafcc653198ad678306986b09450d"
   end
 
   resource "packaging" do
@@ -78,8 +78,8 @@ class Abjad < Formula
   end
 
   resource "uqbar" do
-    url "https://files.pythonhosted.org/packages/0c/4f/9fbac7de674e963fd4ace54815f78bc9c570a63a3e43fbd30fee2762dd5a/uqbar-0.6.8.tar.gz"
-    sha256 "a2356c472df0dea428fbaffd9877ff68e1772918045c7a98c84a387601c95a20"
+    url "https://files.pythonhosted.org/packages/72/f6/0826d9d8b856d7e809ca6f99977721f7fe3e80ca5cc8e47d5cad430e2781/uqbar-0.6.9.tar.gz"
+    sha256 "ec0613ac15948ecba99263c62bff426cfece7215a740aaeb89764f2963b57d48"
   end
 
   def python3
