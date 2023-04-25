@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/51/e2/7858149d51a4c64310ae89e7655cfb7789f86f5a539dd9248931e475157d/abjad-3.16.tar.gz"
-  sha256 "26c1d610f1aedce5eab681847e9fc0b3fe6e86fabc89ed6d11423a1c0364a02b"
+  url "https://files.pythonhosted.org/packages/3d/da/b0af61d5afe6816b0a4cb37c2e7f15ee01c216bae00f4809dcd7dd6ecde6/abjad-3.17.tar.gz"
+  sha256 "ef46979115f783df08e879a6587f37a89467a0511c0f7f727fa8ff16db42d40a"
   license "GPL-3.0-only"
 
   bottle do
@@ -18,8 +18,8 @@ class Abjad < Formula
   depends_on "python@3.11"
 
   resource "Babel" do
-    url "https://files.pythonhosted.org/packages/ff/80/45b42203ecc32c8de281f52e3ec81cb5e4ef16127e9e8543089d8b1649fb/Babel-2.11.0.tar.gz"
-    sha256 "5ef4b3226b0180dedded4229651c8b0e1a3a6a2837d45a073272f313e4cf97f6"
+    url "https://files.pythonhosted.org/packages/ba/42/54426ba5d7aeebde9f4aaba9884596eb2fe02b413ad77d62ef0b0422e205/Babel-2.12.1.tar.gz"
+    sha256 "cc2d99999cd01d44420ae725a21c9e3711b3aadc7976d6147f622d8581963455"
   end
 
   resource "docutils" do
@@ -43,8 +43,8 @@ class Abjad < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/47/d5/aca8ff6f49aa5565df1c826e7bf5e85a6df852ee063600c1efa5b932968c/packaging-23.0.tar.gz"
-    sha256 "b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"
+    url "https://files.pythonhosted.org/packages/b9/6c/7c6658d258d7971c5eb0d9b69fa9265879ec9a9158031206d47800ae2213/packaging-23.1.tar.gz"
+    sha256 "a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f"
   end
 
   resource "ply" do
@@ -53,8 +53,8 @@ class Abjad < Formula
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/da/6a/c427c06913204e24de28de5300d3f0e809933f376e0b7df95194b2bb3f71/Pygments-2.14.0.tar.gz"
-    sha256 "b3ed06a9e8ac9a9aae5a6f5dbe78a8a58655d17b43b93c078f094ddc476ae297"
+    url "https://files.pythonhosted.org/packages/89/6b/2114e54b290824197006e41be3f9bbe1a26e9c39d1f5fa20a6d62945a0b3/Pygments-2.15.1.tar.gz"
+    sha256 "8ace4d3c1dd481894b2005f560ead0f9f19ee64fe983366be1a21e171d12775c"
   end
 
   resource "pytz" do
@@ -63,8 +63,8 @@ class Abjad < Formula
   end
 
   resource "roman" do
-    url "https://files.pythonhosted.org/packages/49/bc/98ff27d555e8315fc572fb84cb72219322a4ea562ab776687c6fd45335c1/roman-3.3.tar.gz"
-    sha256 "2c46ac8db827d34e4fa9ccc0577e7f0b0d84f16ffe112351bd4f1ec2eb12d73f"
+    url "https://files.pythonhosted.org/packages/b0/b3/dc50a14f2d06e19340dcee6eabbc95904b6d4014f8f2d22c6338c1b5d31c/roman-4.0.tar.gz"
+    sha256 "6caab7ba51b83c46b5bf8839e5d782769a6b08fdea8abdfa62a4197c041fd513"
   end
 
   resource "Sphinx" do
