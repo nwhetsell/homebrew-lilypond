@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo rm /Library/Frameworks/Python.framework/Versions/Current/bin/python3-config
           sudo rm /Library/Frameworks/Python.framework/Versions/Current/bin/python3.11-config
-        if: matrix.os == 'macos-12' || matrix.os == 'macos-11'
+        if: matrix.os == 'macos-12'
 
       - run: brew test-bot --only-setup
 
