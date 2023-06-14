@@ -92,7 +92,7 @@ class LilypondUnstable < Formula
     assert_predicate testpath/"test.pdf", :exist?
 
     output = shell_output("#{bin}/lilypond --define-default=show-available-fonts 2>&1")
-    output = output.encode("UTF-8", invalid: :replace, replace: "")
+    output = output.encode("UTF-8", invalid: :replace, replace: "\ufffd")
     common_styles = ["Regular", "Bold", "Italic", "Bold Italic"]
     {
       "C059"            => ["Roman", *common_styles[1..]],
