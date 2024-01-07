@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.11.tar.gz"
-  sha256 "0c3be8d4b0539c35520f2443605d1a113a05b26bd6d5d95368c1dda4110e74c2"
+  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.12.tar.gz"
+  sha256 "eb339afa6bd737549062052299dc64610fc487e89a09bf857977bf76095b1e69"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -52,6 +52,9 @@ class LilypondUnstable < Formula
     sha256 "e0d9b7f11885fdfdc4987f06b2aa0565ad2a4af52b22e5ebf79e1a98abd0ae2f"
   end
 
+  # See https://lists.gnu.org/archive/html/bug-lilypond/2024-01/msg00005.html
+  patch :DATA
+
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
 
@@ -89,8 +92,7 @@ class LilypondUnstable < Formula
     system bin/"lilypond", "--loglevel=ERROR", "test.ly"
     assert_predicate testpath/"test.pdf", :exist?
 
-    output = shell_output("#{bin}/lilypond --define-default=show-available-fonts 2>&1")
-    output = output.encode("UTF-8", invalid: :replace, replace: "\ufffd")
+    output = shell_output("#{bin}/lilypond --define-default=show-available-fonts")
     common_styles = ["Regular", "Bold", "Italic", "Bold Italic"]
     {
       "C059"            => ["Roman", *common_styles[1..]],
@@ -106,3 +108,18 @@ class LilypondUnstable < Formula
     end
   end
 end
+
+__END__
+diff --git a/lily/all-font-metrics.cc b/lily/all-font-metrics.cc
+index cdf16e4..54b29b2 100644
+--- a/lily/all-font-metrics.cc
++++ b/lily/all-font-metrics.cc
+@@ -273,7 +273,7 @@ All_font_metrics::display_fonts (SCM port)
+ {
+   std::string str = display_list (font_config_.get ());
+   str += display_config (font_config_.get ());
+-  scm_write_line (ly_string2scm (str), port);
++  scm_write_line (scm_from_stringn (str.c_str (), str.length (), "ISO-8859-1", SCM_FAILED_CONVERSION_QUESTION_MARK), port);
+ }
+ 
+ std::string
