@@ -13,6 +13,7 @@ class LilypondUnstable < Formula
     "AGPL-3.0-only",
     "LPPL-1.3c",
   ]
+  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.12"
@@ -52,9 +53,6 @@ class LilypondUnstable < Formula
     sha256 "e0d9b7f11885fdfdc4987f06b2aa0565ad2a4af52b22e5ebf79e1a98abd0ae2f"
   end
 
-  # See https://lists.gnu.org/archive/html/bug-lilypond/2024-01/msg00005.html
-  patch :DATA
-
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
 
@@ -88,38 +86,56 @@ class LilypondUnstable < Formula
   end
 
   test do
-    (testpath/"test.ly").write "\\relative { c' d e f g a b c }"
-    system bin/"lilypond", "--loglevel=ERROR", "test.ly"
+    (testpath/"test.ly").write <<~EOS
+      \\relative { c' d e f g a b c }
+
+      #(define-markup-command (pretty-print layout properties markup) (markup?)
+        (let ((stencil (interpret-markup layout properties markup)))
+          (pretty-print (ly:stencil-expr stencil))
+          stencil))
+
+      test-markup = \\markup {
+        \\pretty-print "test"
+        \\pretty-print \\bold "test"
+        \\pretty-print \\italic "test"
+        \\pretty-print \\bold \\italic "test"
+
+        \\pretty-print \\sans "test"
+        \\pretty-print \\sans \\bold "test"
+        \\pretty-print \\sans \\italic "test"
+        \\pretty-print \\sans \\bold \\italic "test"
+
+        \\pretty-print \\typewriter "test"
+        \\pretty-print \\typewriter \\bold "test"
+        \\pretty-print \\typewriter \\italic "test"
+        \\pretty-print \\typewriter \\bold \\italic "test"
+      }
+
+      \\test-markup
+
+      \\markup \\override #'(fonts . ((serif      . "TeX Gyre Schola")
+                                      (sans       . "TeX Gyre Heros")
+                                      (typewriter . "TeX Gyre Cursor"))) {
+        \\test-markup
+      }
+    EOS
+
+    output = shell_output("#{bin}/lilypond --loglevel=ERROR test.ly")
+
     assert_predicate testpath/"test.pdf", :exist?
 
-    output = shell_output("#{bin}/lilypond --define-default=show-available-fonts")
-    common_styles = ["Regular", "Bold", "Italic", "Bold Italic"]
+    common_styles = %w[Regular Bold Italic BoldItalic]
     {
-      "C059"            => ["Roman", *common_styles[1..]],
-      "Nimbus Mono PS"  => common_styles,
-      "Nimbus Sans"     => common_styles,
-      "TeX Gyre Cursor" => common_styles,
-      "TeX Gyre Heros"  => common_styles,
-      "TeX Gyre Schola" => common_styles,
+      "C059"          => ["Roman", *common_styles[1..2], "BdIta"],
+      "NimbusMonoPS"  => common_styles,
+      "NimbusSans"    => common_styles,
+      "TeXGyreCursor" => common_styles,
+      "TeXGyreHeros"  => common_styles,
+      "TeXGyreSchola" => common_styles,
     }.each do |family, styles|
       styles.each do |style|
-        assert_match(/^\s*#{family}:style=#{style}$/, output)
+        assert_match(/^\s*"#{family}-#{style}"$/, output)
       end
     end
   end
 end
-
-__END__
-diff --git a/lily/all-font-metrics.cc b/lily/all-font-metrics.cc
-index cdf16e4..54b29b2 100644
---- a/lily/all-font-metrics.cc
-+++ b/lily/all-font-metrics.cc
-@@ -273,7 +273,7 @@ All_font_metrics::display_fonts (SCM port)
- {
-   std::string str = display_list (font_config_.get ());
-   str += display_config (font_config_.get ());
--  scm_write_line (ly_string2scm (str), port);
-+  scm_write_line (scm_from_stringn (str.c_str (), str.length (), "ISO-8859-1", SCM_FAILED_CONVERSION_QUESTION_MARK), port);
- }
- 
- std::string
