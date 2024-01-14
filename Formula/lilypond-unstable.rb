@@ -13,6 +13,7 @@ class LilypondUnstable < Formula
     "AGPL-3.0-only",
     "LPPL-1.3c",
   ]
+  revision 2
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.12_1"
@@ -52,8 +53,11 @@ class LilypondUnstable < Formula
     sha256 "e0d9b7f11885fdfdc4987f06b2aa0565ad2a4af52b22e5ebf79e1a98abd0ae2f"
   end
 
-  # See https://lists.gnu.org/archive/html/bug-lilypond/2024-01/msg00005.html
-  patch :DATA
+  # Fix running `lilypond -dshow-available-fonts`, remove at LilyPond 2.25.13
+  patch do
+    url "https://gitlab.com/lilypond/lilypond/-/commit/7415196b238fe8c9d72fadece91e92bc41923976.diff"
+    sha256 "2b00e4c54bb732befc23a686be3d187bf9cf325c9c42610fed00557a5b68ef36"
+  end
 
   def install
     system "./autogen.sh", "--noconfigure" if build.head?
@@ -93,6 +97,7 @@ class LilypondUnstable < Formula
     assert_predicate testpath/"test.pdf", :exist?
 
     output = shell_output("#{bin}/lilypond --define-default=show-available-fonts")
+             .encode("UTF-8", invalid: :replace, replace: "\ufffd")
     common_styles = ["Regular", "Bold", "Italic", "Bold Italic"]
     {
       "C059"            => ["Roman", *common_styles[1..]],
@@ -108,18 +113,3 @@ class LilypondUnstable < Formula
     end
   end
 end
-
-__END__
-diff --git a/lily/all-font-metrics.cc b/lily/all-font-metrics.cc
-index cdf16e4..54b29b2 100644
---- a/lily/all-font-metrics.cc
-+++ b/lily/all-font-metrics.cc
-@@ -273,7 +273,7 @@ All_font_metrics::display_fonts (SCM port)
- {
-   std::string str = display_list (font_config_.get ());
-   str += display_config (font_config_.get ());
--  scm_write_line (ly_string2scm (str), port);
-+  scm_write_line (scm_from_stringn (str.c_str (), str.length (), "ISO-8859-1", SCM_FAILED_CONVERSION_QUESTION_MARK), port);
- }
- 
- std::string
