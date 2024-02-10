@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.12.tar.gz"
-  sha256 "eb339afa6bd737549062052299dc64610fc487e89a09bf857977bf76095b1e69"
+  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.13.tar.gz"
+  sha256 "a23a16de1abe0ef80696f59244d93d542a284738b9b29a7ca3ca0aa9bef8b667"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -13,7 +13,6 @@ class LilypondUnstable < Formula
     "AGPL-3.0-only",
     "LPPL-1.3c",
   ]
-  revision 2
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.12_2"
@@ -51,12 +50,6 @@ class LilypondUnstable < Formula
   resource "font-urw-base35" do
     url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/refs/tags/20200910.tar.gz"
     sha256 "e0d9b7f11885fdfdc4987f06b2aa0565ad2a4af52b22e5ebf79e1a98abd0ae2f"
-  end
-
-  # Fix running `lilypond -dshow-available-fonts`, remove at LilyPond 2.25.13
-  patch do
-    url "https://gitlab.com/lilypond/lilypond/-/commit/7415196b238fe8c9d72fadece91e92bc41923976.diff"
-    sha256 "2b00e4c54bb732befc23a686be3d187bf9cf325c9c42610fed00557a5b68ef36"
   end
 
   def install
