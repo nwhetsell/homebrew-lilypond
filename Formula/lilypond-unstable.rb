@@ -34,6 +34,7 @@ class LilypondUnstable < Formula
   depends_on "bison" => :build # bison >= 2.4.1 is required
   depends_on "fontforge" => :build
   depends_on "gettext" => :build
+  depends_on "make" => :build # make >= 4.2 is required
   depends_on "pkg-config" => :build
   depends_on "t1utils" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
