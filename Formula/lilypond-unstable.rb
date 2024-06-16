@@ -60,7 +60,6 @@ class LilypondUnstable < Formula
     system "./configure", "--datadir=#{share}",
                           "--disable-documentation",
                           *("--with-flexlexer-dir=#{Formula["flex"].include}" if OS.linux?),
-                          "GUILE_FLAVOR=guile-3.0",
                           *std_configure_args
 
     system "make"
