@@ -53,6 +53,10 @@ class LilypondUnstable < Formula
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
   uses_from_macos "zlib"
+  
+  on_macos do
+    depends_on "harfbuzz"
+  end
 
   resource "font-urw-base35" do
     url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/refs/tags/20200910.tar.gz"
