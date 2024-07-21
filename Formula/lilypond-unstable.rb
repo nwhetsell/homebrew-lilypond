@@ -53,7 +53,7 @@ class LilypondUnstable < Formula
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
   uses_from_macos "zlib"
-  
+
   on_macos do
     depends_on "harfbuzz"
   end
