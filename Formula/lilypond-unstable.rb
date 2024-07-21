@@ -33,21 +33,26 @@ class LilypondUnstable < Formula
 
   depends_on "bison" => :build # bison >= 2.4.1 is required
   depends_on "fontforge" => :build
-  depends_on "gettext" => :build
   depends_on "make" => :build # make >= 4.2 is required
   depends_on "pkg-config" => :build
   depends_on "t1utils" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "texlive" => :build
+  depends_on "bdw-gc"
+  depends_on "cairo"
   depends_on "fontconfig"
   depends_on "freetype"
+  depends_on "gettext"
   depends_on "ghostscript"
+  depends_on "glib"
   depends_on "guile"
+  depends_on "libpng"
   depends_on "pango"
   depends_on "python@3.12"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
+  uses_from_macos "zlib"
 
   resource "font-urw-base35" do
     url "https://github.com/ArtifexSoftware/urw-base35-fonts/archive/refs/tags/20200910.tar.gz"
