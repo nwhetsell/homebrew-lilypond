@@ -43,7 +43,6 @@ class LilypondUnstable < Formula
   depends_on "cairo"
   depends_on "fontconfig"
   depends_on "freetype"
-  depends_on "gettext"
   depends_on "ghostscript"
   depends_on "glib"
   depends_on "guile"
@@ -56,7 +55,12 @@ class LilypondUnstable < Formula
   uses_from_macos "zlib"
 
   on_macos do
+    depends_on "gettext"
     depends_on "harfbuzz"
+  end
+
+  on_linux do
+    depends_on "gettext" => :build
   end
 
   resource "font-urw-base35" do
