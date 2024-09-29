@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.19.tar.gz"
-  sha256 "8061b839b998f4f70ed0920ac406a0aae1d2ef8125738f5267ff050f015f6435"
+  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.20.tar.gz"
+  sha256 "abe795ce6ebc9b816e02f58a07f672b3bb2d993f5aac043ff89fead80bcb9db3"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
