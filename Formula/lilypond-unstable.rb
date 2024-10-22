@@ -47,7 +47,7 @@ class LilypondUnstable < Formula
   depends_on "guile"
   depends_on "libpng"
   depends_on "pango"
-  depends_on "python@3.12"
+  depends_on "python@3.13"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
