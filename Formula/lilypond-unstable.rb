@@ -83,7 +83,7 @@ class LilypondUnstable < Formula
 
     elisp.install share.glob("emacs/site-lisp/*.el")
 
-    fonts = share/"lilypond"/version/"fonts/otf"
+    fonts = share/"lilypond"/(build.head? ? File.read("out/VERSION").chomp : version)/"fonts/otf"
 
     resource("font-urw-base35").stage do
       ["C059", "NimbusMonoPS", "NimbusSans"].each do |name|
