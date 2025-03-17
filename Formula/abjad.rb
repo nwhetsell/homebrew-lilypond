@@ -8,11 +8,11 @@ class Abjad < Formula
   license "GPL-3.0-only"
 
   bottle do
-    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.21"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a892d9e65e161fe7e6c59759098e0473ce0b3422dbf433c933ea190909ccca8c"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "18b8cff66d7ca2a83e4cc0a9a06426ac2a8949bd3ff89deca3fd5d3e2f3fe7ba"
-    sha256 cellar: :any_skip_relocation, ventura:       "f28c1a2882dd9fd50671847c7869d9e05c2ea6aab6e3eb013374f0bc6d89d343"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "29be2597c8201abb651cfcfaaf9302b5052cae1901159ac92173521814bd6cd9"
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.22"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1d30eacae8180de8ee2dda232a306bd5008ba29a93a167aa268084f5960b8349"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "726f77a78762493db2e2dbaa6f5a299d69c79de044ae66049fdbb5c3b67ebc9a"
+    sha256 cellar: :any_skip_relocation, ventura:       "7b4cf70d2478c1b7a2314310b8c32b8ba5f2a1e7249c61cbe04dff6304f59a72"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bbed4e58620e4c03d081194b19e8e96c44274fd6e169b95245fe53439c075071"
   end
 
   depends_on "lilypond"
