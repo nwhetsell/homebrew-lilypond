@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.24.tar.gz"
-  sha256 "d67ea62416d971f418b26ae35b1706fc4b48c85f6e1cd4554fb7d7dfece85dce"
+  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.25.tar.gz"
+  sha256 "28098085c6a4e28c9605cd2a9375d6a7f3ccd9c8cc2d58336953d2cac6b16411"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -84,7 +84,7 @@ class LilypondUnstable < Formula
 
     elisp.install share.glob("emacs/site-lisp/*.el")
 
-    fonts = share/"lilypond"/(build.head? ? File.read("out/VERSION").chomp : version)/"fonts/otf"
+    fonts = share/"lilypond"/File.read("out/VERSION").chomp/"fonts/otf"
 
     resource("font-urw-base35").stage do
       ["C059", "NimbusMonoPS", "NimbusSans"].each do |name|
