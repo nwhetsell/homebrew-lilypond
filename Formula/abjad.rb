@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/91/3b/9cd0309ca7102cedba8220f0f38fb565b09ac01e190050ea50ce66b42471/abjad-3.23.tar.gz"
-  sha256 "751c05fadf7cf33fb0dcc79e96134d04958a309a49cc5520eb8430f4aafd32a4"
+  url "https://files.pythonhosted.org/packages/73/0f/8cdf2a180af4ef2f30bf547085a7913f2c4414c4410cd2faf86003789de6/abjad-3.24.tar.gz"
+  sha256 "f0d4912933ee728c31c661fea8f02bee788f3dac2f0d38182cefe6bef33a0d82"
   license "GPL-3.0-only"
 
   bottle do
@@ -61,8 +61,8 @@ class Abjad < Formula
   end
 
   resource "unidecode" do
-    url "https://files.pythonhosted.org/packages/f7/89/19151076a006b9ac0dd37b1354e031f5297891ee507eb624755e58e10d3e/Unidecode-1.3.8.tar.gz"
-    sha256 "cfdb349d46ed3873ece4586b96aa75258726e2fa8ec21d6f00a591d98806c2f4"
+    url "https://files.pythonhosted.org/packages/94/7d/a8a765761bbc0c836e397a2e48d498305a865b70a8600fd7a942e85dcf63/Unidecode-1.4.0.tar.gz"
+    sha256 "ce35985008338b676573023acc382d62c264f307c8f7963733405add37ea2b23"
   end
 
   resource "uqbar" do
