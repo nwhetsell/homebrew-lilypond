@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/da/28/31c88974401d7c661693b5266ec4cc907de84c474453960c275c0bbb8752/abjad-3.26.tar.gz"
-  sha256 "ba18639a87f745b81620b19f7894be4458e9d3bec563107a924fd77e43d4c762"
+  url "https://files.pythonhosted.org/packages/61/bd/56cf8879b0222aa20bbd3b4a3288d391b3b4a735fb8afb55b37f94140944/abjad-3.27.tar.gz"
+  sha256 "bface6c836cfce707748329e1a801d8515ce1759a46cc3a97b1119ecafa4cc3f"
   license "GPL-3.0-only"
 
   bottle do
@@ -51,8 +51,8 @@ class Abjad < Formula
   end
 
   resource "roman" do
-    url "https://files.pythonhosted.org/packages/85/49/b01cf3c88006005613234cfc78b2e371adc3b55fe125641679bca46963f9/roman-5.0.tar.gz"
-    sha256 "cb35293c1c4046105fd899194f4f2985f78c955a8b05937f7ab93f3be1660697"
+    url "https://files.pythonhosted.org/packages/30/86/8bdb59db4b7ea9a2bd93f8d25298981e09a4c9f4744cf4cbafa7ef6fee7b/roman-5.1.tar.gz"
+    sha256 "3a86572e9bc9183e771769601189e5fa32f1620ffeceebb9eca836affb409986"
   end
 
   resource "sphinx" do
@@ -66,8 +66,8 @@ class Abjad < Formula
   end
 
   resource "uqbar" do
-    url "https://files.pythonhosted.org/packages/37/17/d930fa7a3ad8951974561c1b8fd21a7508ae8be162727459bcee12f33c87/uqbar-0.7.4.tar.gz"
-    sha256 "ab8a7e922e7003f8181969eddadcc28846a49387c197d3fde8e373d99c650828"
+    url "https://files.pythonhosted.org/packages/51/dc/abfd960068896da72de0a0a75feb3e14e1909fbd8a2e992874cc5441a17c/uqbar-0.9.1.tar.gz"
+    sha256 "0df81253530054d2989fd4492df772d91114700e9b1929b92d8f5cbde7c935d3"
   end
 
   def python3
