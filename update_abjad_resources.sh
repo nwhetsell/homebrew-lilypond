@@ -17,4 +17,4 @@ sphinxcontrib-qthelp,\
 sphinxcontrib-serializinghtml\
 "
 
-brew update-python-resources --exclude-packages "$excluded_packages" abjad
+brew update-python-resources --exclude-packages "${excluded_packages}" abjad
