@@ -3,8 +3,8 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/61/bd/56cf8879b0222aa20bbd3b4a3288d391b3b4a735fb8afb55b37f94140944/abjad-3.27.tar.gz"
-  sha256 "bface6c836cfce707748329e1a801d8515ce1759a46cc3a97b1119ecafa4cc3f"
+  url "https://files.pythonhosted.org/packages/12/1f/79d81215427225a0b3b92baf4689a10c9f88d02dd54c49ff4d7c02ace3b8/abjad-3.28.tar.gz"
+  sha256 "2782cf392cf7e06bc3470a421bccade0b02ab7e7610eb7c6fd6e39d5b651a609"
   license "GPL-3.0-only"
 
   bottle do
@@ -66,8 +66,8 @@ class Abjad < Formula
   end
 
   resource "uqbar" do
-    url "https://files.pythonhosted.org/packages/51/dc/abfd960068896da72de0a0a75feb3e14e1909fbd8a2e992874cc5441a17c/uqbar-0.9.1.tar.gz"
-    sha256 "0df81253530054d2989fd4492df772d91114700e9b1929b92d8f5cbde7c935d3"
+    url "https://files.pythonhosted.org/packages/1b/0c/bb90e61c94de516f84d33bc0d6e0ccb9d155575b6509d212330da384e445/uqbar-0.9.3.tar.gz"
+    sha256 "9e2854473a8231aee2ecc0ee4073fbb4aa5eed580957c8154626810d3933817e"
   end
 
   def python3
