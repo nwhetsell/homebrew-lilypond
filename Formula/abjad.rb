@@ -6,6 +6,7 @@ class Abjad < Formula
   url "https://files.pythonhosted.org/packages/4b/74/b4c955868f88d72dbf16b145ccf57f8e93dde574059ae05de41aa814754c/abjad-3.29.tar.gz"
   sha256 "0975b343b6d35f7e81dae31cf4506d52b241ee8422a5cf1fb15ad132f595f4dc"
   license "GPL-3.0-only"
+  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.29"
@@ -15,7 +16,7 @@ class Abjad < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "b1b02378d053bf9b03279cf32d1b2028ee92b98068b75c5c19512876435ceee5"
   end
 
-  depends_on "lilypond"
+  depends_on "nwhetsell/lilypond/lilypond-unstable"
   depends_on "pygments"
   depends_on "python-packaging"
   depends_on "python@3.13"
