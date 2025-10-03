@@ -3,10 +3,9 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/4b/74/b4c955868f88d72dbf16b145ccf57f8e93dde574059ae05de41aa814754c/abjad-3.29.tar.gz"
-  sha256 "0975b343b6d35f7e81dae31cf4506d52b241ee8422a5cf1fb15ad132f595f4dc"
+  url "https://files.pythonhosted.org/packages/8b/94/d567635e5255c561d8aece5c4e03a233760e4cce26406c0fd529862422ab/abjad-3.30.tar.gz"
+  sha256 "7fb4d6bc98325984e3c7643e2c154b3968d1f6d1a9995eead99c465e325ff16f"
   license "GPL-3.0-only"
-  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.29_1"
@@ -41,8 +40,8 @@ class Abjad < Formula
   end
 
   resource "markupsafe" do
-    url "https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz"
-    sha256 "ee55d3edf80167e48ea11a923c7386f4669df67d7994554387f84e7d8b0a2bf0"
+    url "https://files.pythonhosted.org/packages/7e/99/7690b6d4034fffd95959cbe0c02de8deb3098cc577c67bb6a24fe5d7caa7/markupsafe-3.0.3.tar.gz"
+    sha256 "722695808f4b6457b320fdc131280796bdceb04ab50fe1795cd540799ebe1698"
   end
 
   resource "ply" do
