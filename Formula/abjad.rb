@@ -6,6 +6,7 @@ class Abjad < Formula
   url "https://files.pythonhosted.org/packages/8b/94/d567635e5255c561d8aece5c4e03a233760e4cce26406c0fd529862422ab/abjad-3.30.tar.gz"
   sha256 "7fb4d6bc98325984e3c7643e2c154b3968d1f6d1a9995eead99c465e325ff16f"
   license "GPL-3.0-only"
+  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.30"
@@ -17,7 +18,7 @@ class Abjad < Formula
   depends_on "nwhetsell/lilypond/lilypond-unstable"
   depends_on "pygments"
   depends_on "python-packaging"
-  depends_on "python@3.13"
+  depends_on "python@3.14"
 
   resource "babel" do
     url "https://files.pythonhosted.org/packages/7d/6b/d52e42361e1aa00709585ecc30b3f9684b3ab62530771402248b1b1d6240/babel-2.17.0.tar.gz"
@@ -70,7 +71,7 @@ class Abjad < Formula
   end
 
   def python3
-    which("python3.13")
+    which("python3.14")
   end
 
   def install
