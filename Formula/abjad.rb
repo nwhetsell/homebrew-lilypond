@@ -3,10 +3,9 @@ class Abjad < Formula
 
   desc "Python API for building LilyPond files"
   homepage "https://abjad.github.io"
-  url "https://files.pythonhosted.org/packages/8b/94/d567635e5255c561d8aece5c4e03a233760e4cce26406c0fd529862422ab/abjad-3.30.tar.gz"
-  sha256 "7fb4d6bc98325984e3c7643e2c154b3968d1f6d1a9995eead99c465e325ff16f"
+  url "https://files.pythonhosted.org/packages/76/9c/369810e498be649ebc531e9f6a78e66d28b45174f1f8f1b4af6bdf11bbf7/abjad-3.31.tar.gz"
+  sha256 "25d6d02f7d2afc454b120112d090e7d3d7feeda5b13d98b8bc35f5379d269ac8"
   license "GPL-3.0-only"
-  revision 1
 
   bottle do
     root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/abjad-3.30_1"
