@@ -1,6 +1,6 @@
 # homebrew-lilypond
 
-This is a [Homebrew](https://brew.sh) tap for installing the unstable version of [LilyPond](https://lilypond.org). There is also a formula for [Abjad](https://abjad.github.io).
+This is a [Homebrew](https://brew.sh) tap for installing the unstable version of [LilyPond](https://lilypond.org).
 
 To install the unstable version of LilyPond, run:
 
