@@ -1,0 +1,14 @@
+include:
+- "**/*.rb"
+- "/opt/homebrew/Library/Homebrew/**/*.rb"
+exclude:
+- spec/**/*
+- test/**/*
+- vendor/**/*
+- ".bundle/**/*"
+require: []
+domains: []
+reporters:
+- rubocop
+- require_not_found
+max_files: 0
