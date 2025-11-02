@@ -15,7 +15,7 @@ class Abjad < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "3948fcb9016fdd3e9d6e04d847fc385e69caac96b8e5f54b3cec7e0cb362c249"
   end
 
-  deprecate! date: "2025-10-31", because: "abjad is available at https://pypi.org/project/abjad/"
+  disable! date: "2025-12-01", because: "is available at https://pypi.org/project/abjad/"
 
   depends_on "nwhetsell/lilypond/lilypond-unstable"
   depends_on "pygments"
