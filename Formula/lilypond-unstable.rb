@@ -15,11 +15,10 @@ class LilypondUnstable < Formula
   ]
 
   bottle do
-    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.30"
-    sha256 arm64_tahoe:   "534c1e13b0c2f1d0aef3c4ffedbdd805deedd974b4c6541bdceebef15cc75b71"
-    sha256 arm64_sequoia: "984cbdd57ef376eef7bbeeb24d7c94b67a21178c47f9a0bab8951872c7b495a6"
-    sha256 arm64_sonoma:  "63c2f08ebf32b5a7b91bc24ab3c4f9ab92b2a30e7fe1dcd6c837a140674c0a95"
-    sha256 x86_64_linux:  "546fc201c11cca0565b8d5c8c30b883165f3484cc6e8b126fb73e8a11f44136a"
+    root_url "https://github.com/nwhetsell/homebrew-lilypond/releases/download/lilypond-unstable-2.25.31"
+    sha256 arm64_tahoe:   "8b15a7c22256fe038d1692f50e31da0a72737f77391fb86b6c22707fc20b0653"
+    sha256 arm64_sequoia: "5ace1a33b5dfa48c3ff3a37aec924bc0c54c8aaad4fc937e492ee2e4761582d3"
+    sha256 arm64_sonoma:  "7c59a6aaa7c30d0566b6fac31fdf28664e55f8d5dc1111ab827fb321fe250662"
   end
 
   head do
