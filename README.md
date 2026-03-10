@@ -11,7 +11,7 @@ brew install nwhetsell/lilypond/lilypond-unstable
 To use the unstable version of LilyPond, you can either add it to your `PATH`, or run:
 
 ```sh
-brew unlink lilypond; brew link lilypond-unstable
+brew unlink lilypond; brew link --force lilypond-unstable
 ```
 
 You should now be able to run the unstable version of LilyPond:
