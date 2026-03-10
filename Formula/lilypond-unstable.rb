@@ -29,7 +29,7 @@ class LilypondUnstable < Formula
     depends_on "autoconf" => :build
   end
 
-  keg_only "this is an alternate version of a formula in Homebrew/core"
+  keg_only "this is an alternate version of a core formula"
 
   depends_on "bison" => :build # bison >= 2.4.1 is required
   depends_on "fontforge" => :build
