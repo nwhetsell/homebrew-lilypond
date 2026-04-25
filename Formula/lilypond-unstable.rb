@@ -1,8 +1,8 @@
 class LilypondUnstable < Formula
   desc "Music engraving system"
   homepage "https://lilypond.org"
-  url "https://lilypond.org/download/source/v2.25/lilypond-2.25.81.tar.gz"
-  sha256 "44eef5e3ec5011b6813231dc1c61ee3492ff24dcfa872c034c8789177974acf1"
+  url "https://lilypond.org/download/source/v2.27/lilypond-2.27.0.tar.gz"
+  sha256 "81d7616abbb81bc84c015292fea71ccc0aaa357a11351fef646268591fb1db24"
   license all_of: [
     "GPL-3.0-or-later",
     "GPL-3.0-only",
@@ -33,8 +33,8 @@ class LilypondUnstable < Formula
 
   depends_on "bison" => :build # bison >= 2.4.1 is required
   depends_on "fontforge" => :build
-  depends_on "make" => :build # make >= 4.2 is required
-  depends_on "pkg-config" => :build
+  depends_on "gettext" => :build
+  depends_on "pkgconf" => :build
   depends_on "t1utils" => :build
   depends_on "texinfo" => :build # makeinfo >= 6.1 is required
   depends_on "texlive" => :build
@@ -51,15 +51,15 @@ class LilypondUnstable < Formula
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl" => :build
-  uses_from_macos "zlib"
 
   on_macos do
+    depends_on "make" => :build # make >= 4.2 is required
     depends_on "gettext"
     depends_on "harfbuzz"
   end
 
   on_linux do
-    depends_on "gettext" => :build
+    depends_on "zlib-ng-compat"
   end
 
   resource "font-urw-base35" do
